@@ -1,0 +1,565 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在线SPSS教程1：Statistics Solutions/Analysis
+
+在线SPSS教程2：SPSS Statistics Tutorials
+
+在线SPSS教程3：T-test
+Independent t-test
+Dependent/Paired-samples T-Test
+
+(M)ANOVA
+One-way ANOVA
+ANOVA with Repeated Measures
+T">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SPSS操作指南">
+<meta property="og:url" content="http://yoursite.com/SPSS/index.html">
+<meta property="og:site_name" content="Psychological Statistics">
+<meta property="og:description" content="在线SPSS教程1：Statistics Solutions/Analysis
+
+在线SPSS教程2：SPSS Statistics Tutorials
+
+在线SPSS教程3：T-test
+Independent t-test
+Dependent/Paired-samples T-Test
+
+(M)ANOVA
+One-way ANOVA
+ANOVA with Repeated Measures
+T">
+<meta property="og:updated_time" content="2016-12-25T13:28:04.756Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SPSS操作指南">
+<meta name="twitter:description" content="在线SPSS教程1：Statistics Solutions/Analysis
+
+在线SPSS教程2：SPSS Statistics Tutorials
+
+在线SPSS教程3：T-test
+Independent t-test
+Dependent/Paired-samples T-Test
+
+(M)ANOVA
+One-way ANOVA
+ANOVA with Repeated Measures
+T">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Penulis'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/SPSS/"/>
+
+
+
+
+
+  <title>
+  
+
+  
+    SPSS操作指南 | Psychological Statistics
+  
+</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Psychological Statistics</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-graduation-cap"></i> <br />
+            
+            Theory
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-spss">
+          <a href="/SPSS" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            SPSS
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-exam">
+          <a href="/exam" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            exam
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Course information
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline">SPSS操作指南</h2>
+
+
+
+</header>
+
+    
+    
+      <h1 id="在线spss教程1"><a href="#在线SPSS教程1：" class="headerlink" title="在线SPSS教程1："></a>在线SPSS教程<sup>1</sup>：</h1><p><strong><a href="http://www.statisticssolutions.com/directory-of-statistical-analyses/" target="_blank" rel="external">Statistics Solutions/Analysis</a></strong></p>
+<hr>
+<h1 id="在线spss教程2"><a href="#在线SPSS教程2：" class="headerlink" title="在线SPSS教程2："></a>在线SPSS教程<sup>2</sup>：</h1><p><strong><a href="http://www.stattutorials.com/SPSS/index.html" target="_blank" rel="external">SPSS Statistics Tutorials</a></strong></p>
+<hr>
+<h1 id="在线spss教程3"><a href="#在线SPSS教程3：" class="headerlink" title="在线SPSS教程3："></a>在线SPSS教程<sup>3</sup>：</h1><h2 id="t-test"><a href="#T-test" class="headerlink" title="T-test"></a>T-test</h2><blockquote>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/independent-t-test-using-spss-statistics.php" target="_blank" rel="external">Independent t-test</a></strong></p>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/dependent-t-test-using-spss-statistics.php" target="_blank" rel="external">Dependent/Paired-samples T-Test</a></strong></p>
+</blockquote>
+<h2 id="manova"><a href="#M-ANOVA" class="headerlink" title="(M)ANOVA"></a>(M)ANOVA</h2><blockquote>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/one-way-anova-using-spss-statistics.php" target="_blank" rel="external">One-way ANOVA</a></strong></p>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/one-way-anova-repeated-measures-using-spss-statistics.php" target="_blank" rel="external">ANOVA with Repeated Measures</a></strong></p>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/two-way-anova-using-spss-statistics.php" target="_blank" rel="external">Two-way ANOVA</a></strong></p>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/two-way-repeated-measures-anova-using-spss-statistics.php" target="_blank" rel="external">Two-way repeated measures ANOVA</a></strong></p>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/mixed-anova-using-spss-statistics.php" target="_blank" rel="external">Mixed ANOVA</a></strong>  <a href="/SPSS/mixed_ANOVA.html">中文教程</a></p>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/ancova-using-spss-statistics.php" target="_blank" rel="external">One-way ANCOVA</a></strong></p>
+</blockquote>
+<h2 id="non-parametric-analysis"><a href="#Non-Parametric-Analysis" class="headerlink" title="Non-Parametric Analysis"></a>Non-Parametric Analysis</h2><blockquote>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/mann-whitney-u-test-using-spss-statistics.php" target="_blank" rel="external">Mann-Whitney U Test</a></strong></p>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/wilcoxon-signed-rank-test-using-spss-statistics.php" target="_blank" rel="external">Wilcoxon Signed Rank Test</a></strong></p>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/sign-test-using-spss-statistics.php" target="_blank" rel="external">Sign Test</a></strong></p>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/kruskal-wallis-h-test-using-spss-statistics.php" target="_blank" rel="external">Kruskal-Wallis H Test</a></strong></p>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/friedman-test-using-spss-statistics.php" target="_blank" rel="external">Friedman Test</a></strong></p>
+</blockquote>
+<h2 id="regression-analysis"><a href="#Regression-Analysis" class="headerlink" title="Regression Analysis"></a>Regression Analysis</h2><blockquote>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/linear-regression-using-spss-statistics.php" target="_blank" rel="external">Linear Regression Analysis</a></strong></p>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/multiple-regression-using-spss-statistics.php" target="_blank" rel="external">Multiple Regression Analysis</a></strong></p>
+</blockquote>
+<h2 id="factor-analysis"><a href="#Factor-Analysis" class="headerlink" title="Factor Analysis"></a>Factor Analysis</h2><blockquote>
+<p><strong><a href="https://statistics.laerd.com/spss-tutorials/principal-components-analysis-pca-using-spss-statistics.php" target="_blank" rel="external">Factor Analysis</a></strong></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>[1] www.statisticssolutions.com<br>[2] www.stattutorials.com<br>[3] statistics.laerd.com</p>
+</blockquote>
+<hr>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Data Analysis" />
+          <p class="site-author-name" itemprop="name">Data Analysis</p>
+          <p class="site-description motion-element" itemprop="description">心理统计学</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Data Analysis</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

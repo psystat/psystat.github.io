@@ -1,0 +1,498 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="很久很久以前，在拉格朗日（Lagrange）照耀下，有几座城：分别是常微分方城（常微分方程）和偏微分方城（偏微分方程）这两座兄弟城，还有数理方城（数理方程）、随机过城（随机过程）。从这几座城里流出了几条溪，比较著名的有：柯溪（Cauchy）、数学分溪（数学分析）、泛函分溪（泛函分析）、回归分溪（回归分析）、时间序列分溪（时间序列分析）等。其中某几条溪和支流汇聚在一起，形成了解析几河（解析几何）、微">
+<meta property="og:type" content="website">
+<meta property="og:title" content="从前有一棵树叫高数,上面挂了很多人">
+<meta property="og:url" content="http://yoursite.com/chapter/gs.html">
+<meta property="og:site_name" content="Psychological Statistics">
+<meta property="og:description" content="很久很久以前，在拉格朗日（Lagrange）照耀下，有几座城：分别是常微分方城（常微分方程）和偏微分方城（偏微分方程）这两座兄弟城，还有数理方城（数理方程）、随机过城（随机过程）。从这几座城里流出了几条溪，比较著名的有：柯溪（Cauchy）、数学分溪（数学分析）、泛函分溪（泛函分析）、回归分溪（回归分析）、时间序列分溪（时间序列分析）等。其中某几条溪和支流汇聚在一起，形成了解析几河（解析几何）、微">
+<meta property="og:updated_time" content="2017-10-09T09:27:50.550Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从前有一棵树叫高数,上面挂了很多人">
+<meta name="twitter:description" content="很久很久以前，在拉格朗日（Lagrange）照耀下，有几座城：分别是常微分方城（常微分方程）和偏微分方城（偏微分方程）这两座兄弟城，还有数理方城（数理方程）、随机过城（随机过程）。从这几座城里流出了几条溪，比较著名的有：柯溪（Cauchy）、数学分溪（数学分析）、泛函分溪（泛函分析）、回归分溪（回归分析）、时间序列分溪（时间序列分析）等。其中某几条溪和支流汇聚在一起，形成了解析几河（解析几何）、微">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Penulis'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/chapter/gs.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+    从前有一棵树叫高数,上面挂了很多人 | Psychological Statistics
+  
+</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Psychological Statistics</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-graduation-cap"></i> <br />
+            
+            Theory
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-spss">
+          <a href="/SPSS" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            SPSS
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-exam">
+          <a href="/exam" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            exam
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Course information
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline">从前有一棵树叫高数,上面挂了很多人</h2>
+
+
+
+</header>
+
+    
+    
+      <p>很久很久以前，在拉格朗日（Lagrange）照耀下，有几座城：分别是常微分方城（常微分方程）和偏微分方城（偏微分方程）这两座兄弟城，还有数理方城（数理方程）、随机过城（随机过程）。从这几座城里流出了几条溪，比较著名的有：柯溪（Cauchy）、数学分溪（数学分析）、泛函分溪（泛函分析）、回归分溪（回归分析）、时间序列分溪（时间序列分析）等。其中某几条溪和支流汇聚在一起，形成了解析几河（解析几何）、微分几河（微分几何）、黎曼几河（黎曼几何）三条大河。<br>河边有座古老的海森堡（Heisenberg），里面生活着亥霍母子（Helmholtz），穿着德布罗衣（de Broglie）、卢瑟服（Rutherford）、门捷列服（Mendeleev），这样就不会被开尔蚊（Kelvin）骚扰，被河里的薛定鳄（Schrödinger）咬伤。城堡门口两边摆放着牛墩（Newton）和道尔墩（Dalton），出去便是鲍林（Pauling）。鲍林（Pauling）里面的树非常多：有高等代树（高等代数）、抽象代树（抽象代数）、线性代树（线性代数）、实变函树（实变函数）、复变函树（复变函数）、数值代树（数值代数）等，还有长满了傅立叶（Fourier），开满了范德花（Van del Waals）的级树（级数）……人们专门在这些树边放了许多的盖桶（概统）、高桶（高统），这是用来放尸体的，因为，挂在上面的人，太多了，太多了……<br>这些人死后就葬在微积坟（微积分），坟的后面是一片广阔的麦克劳林（Maclaurin），林子里有一只费马（Fermat），它喜欢在柯溪（Cauchy）喝水，溪里撒着用高丝（Gauss）做成的ε-网，有时可以捕捉到二次剩鱼（二次剩余）。后来，芬斯勒几河（Finsler几何）改道，几河（几何）不能同调，工程师李群（Lie群）不得不微分流形，调河分溪（调和分析）。几河分溪（几何分析）以后，水量大涨，建了个测渡（测度）也没有效果，还是挂了很多人，连非交换代树（非交换代数）都挂满了，不得不弄到动力系桶（动力系统）里扔掉。有些人不想挂在树上，索性投入了数值逼井（数值逼近）。结果投井的人发现井下生活着线性回龟（线性回归）和非线性回龟（非线性回归）两种龟：前一种最为常见的是简单线性回龟（简单线性回归）和多元线性回龟（多元线性回归），它们都喜欢吃最小二橙（最小二乘）。<br>柯溪（Cauchy）经过不等市（不等式），渐近县（渐近线）和极县（极限），这里房子的屋顶都是用伽罗瓦（Galois）盖的，人们的主食是无穷小粮（无穷小量）。极县（极限）旁有一座道观叫线性无观（线性无关），线性无观（线性无关）里有很多道士叫做多项士（多项式），道长比较二，也叫二项士（二项式）。线性无观（线性无关）旁有一座庙叫做香寺（相似），长老叫做满志（满秩），排出咀阵（矩阵），守卫着一座塔方。一天二项士（二项式）拎着马尔可夫链（Markov链）来踢馆，满志（满秩）曰：“镇定（正定）！镇定（正定）！吾级数太低，愿以郑太求和（正态求和），道友合同否？”二项士（二项式）惊呼：“特真值（特征值）啊！”立退。不料满志（满秩）此人置信度太低，不以郑太求和（正态求和），却要郑太回归（正态回归）。二项士（二项式）大怒在密度函树（密度函数）下展开标准分布，布里包了两个釵釵，分别是标准釵（标准差）和方釵（方差）。满志（满秩）见状央（鞅）求饶命。二项士（二项式）将其关到希尔伯特空间，命巴纳赫（Banach）看守。后来，巴纳赫（Banach）让其付饭钱，满志（满秩）念已缴钱便贪多吃，结果在无参树（无参数）下被噎死（Bayes）。</p>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Data Analysis" />
+          <p class="site-author-name" itemprop="name">Data Analysis</p>
+          <p class="site-description motion-element" itemprop="description">心理统计学</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Data Analysis</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

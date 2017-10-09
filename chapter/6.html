@@ -1,0 +1,573 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="正态分布的前世今生
+一. 正态分布，熟悉的陌生人
+二. 邂逅，正态曲线的首次发现
+
+
+
+
+
+课件下载: 第一、二节; 第三、四节
+
+正态分布的前世今生
+神说，要有正态分布，就有了正态分布。神看正态分布是好的，就让随机误差服从了正态分布。创世纪—数理统计
+
+一. 正态分布，熟悉的陌生人学过基础统计学的同学大都对正态分布非常熟悉。这个钟形的分布曲线不但形状优雅，它对应的密度函数写成数学表达式$$f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="第六章 概率分布">
+<meta property="og:url" content="http://yoursite.com/chapter/6.html">
+<meta property="og:site_name" content="Psychological Statistics">
+<meta property="og:description" content="正态分布的前世今生
+一. 正态分布，熟悉的陌生人
+二. 邂逅，正态曲线的首次发现
+
+
+
+
+
+课件下载: 第一、二节; 第三、四节
+
+正态分布的前世今生
+神说，要有正态分布，就有了正态分布。神看正态分布是好的，就让随机误差服从了正态分布。创世纪—数理统计
+
+一. 正态分布，熟悉的陌生人学过基础统计学的同学大都对正态分布非常熟悉。这个钟形的分布曲线不但形状优雅，它对应的密度函数写成数学表达式$$f">
+<meta property="og:image" content="http://yoursite.com/chapter/normal/normal_curve.png">
+<meta property="og:image" content="http://yoursite.com/chapter/normal/10dm_with_gauss_curve.jpg">
+<meta property="og:image" content="http://yoursite.com/chapter/normal/10dm_with_gauss_curve_detail.jpg">
+<meta property="og:image" content="http://yoursite.com/chapter/normal/20-mark-gauss.jpg">
+<meta property="og:image" content="http://yoursite.com/chapter/normal/abraham-de-moivre.jpg">
+<meta property="og:image" content="http://yoursite.com/chapter/normal/laplace.jpg">
+<meta property="og:updated_time" content="2017-05-11T01:59:26.995Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第六章 概率分布">
+<meta name="twitter:description" content="正态分布的前世今生
+一. 正态分布，熟悉的陌生人
+二. 邂逅，正态曲线的首次发现
+
+
+
+
+
+课件下载: 第一、二节; 第三、四节
+
+正态分布的前世今生
+神说，要有正态分布，就有了正态分布。神看正态分布是好的，就让随机误差服从了正态分布。创世纪—数理统计
+
+一. 正态分布，熟悉的陌生人学过基础统计学的同学大都对正态分布非常熟悉。这个钟形的分布曲线不但形状优雅，它对应的密度函数写成数学表达式$$f">
+<meta name="twitter:image" content="http://yoursite.com/chapter/normal/normal_curve.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Penulis'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/chapter/6.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+    第六章 概率分布 | Psychological Statistics
+  
+</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Psychological Statistics</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-graduation-cap"></i> <br />
+            
+            Theory
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-spss">
+          <a href="/SPSS" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            SPSS
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-exam">
+          <a href="/exam" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            exam
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Course information
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline">第六章 概率分布</h2>
+
+
+
+</header>
+
+    
+    
+      <!-- toc -->
+<ul>
+<li><a href="#正态分布的前世今生">正态分布的前世今生</a><ul>
+<li><a href="#一-正态分布熟悉的陌生人">一. 正态分布，熟悉的陌生人</a></li>
+<li><a href="#二-邂逅正态曲线的首次发现">二. 邂逅，正态曲线的首次发现</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<blockquote>
+<p>课件下载: <a href="/chapter/chapter06_1.pdf">第一、二节</a>; <a href="/chapter/chapter06_2.pdf">第三、四节</a></p>
+</blockquote>
+<h1 id="正态分布的前世今生"><a href="#正态分布的前世今生" class="headerlink" title="正态分布的前世今生"></a>正态分布的前世今生</h1><blockquote>
+<p>神说，要有正态分布，就有了正态分布。<br>神看正态分布是好的，就让随机误差服从了正态分布。<br>创世纪—数理统计</p>
+</blockquote>
+<h2 id="一-正态分布熟悉的陌生人"><a href="#一-正态分布，熟悉的陌生人" class="headerlink" title="一. 正态分布，熟悉的陌生人"></a>一. 正态分布，熟悉的陌生人</h2><p>学过基础统计学的同学大都对正态分布非常熟悉。这个钟形的分布曲线不但形状优雅，它对应的密度函数写成数学表达式<br>$$<br>f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}<br>$$<br>也非常具有数学的美感。其标准化后的概率密度函数<br>$$<br>f(x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}<br>$$<br>更加的简洁漂亮，两个最重要的数学常量$\pi$,$e$都出现在这公式之中。在我个人的审美之中，它也属于 top-N 的最美丽的数学公式之一，如果有人问我数理统计领域哪个公式最能让人感觉到上帝的存在，那我一定投正态分布的票。因为这个分布戴着神秘的面纱，在自然界中无处不在，让你在纷繁芜杂的数据背后看到隐隐的秩序。<br><img src="/chapter/normal/normal_curve.png" alt="normal curve"></p>
+<center>正态分布曲线</center>
+
+
+<p>正态分布又通常被称为高斯分布，在科学领域，冠名权那是一个很高的荣誉。2002年以前去过德国的兄弟们还会发现，德国1991年至2001年间发行的的一款10马克的纸币上印着高斯(Carl Friedrich Gauss, 1777-1855)的头像和正态密度曲线，而1977年东德发行的20马克的可流通纪念钢镚上，也印着正态分布曲线和高斯的名字。正态分布被冠名高斯分布，我们也容易认为是高斯发现了正态分布，其实不然，不过高斯对于正态分布的历史地位的确立是起到了决定性的作用。<br><img src="/chapter/normal/10dm_with_gauss_curve.jpg" alt="gauss curve"><br><img src="/chapter/normal/10dm_with_gauss_curve_detail.jpg" alt="gauss curve detail"><br><img src="/chapter/normal/20-mark-gauss.jpg" alt="gauss"></p>
+<p><center>德国马克和纪念币上的高斯头像和正态分布曲线</center><br>正态曲线虽然看上去很美，却不是一拍脑袋就能想到的。我们在本科学习数理统计的时候，课本一上来介绍正态分布就给出分布密度函数，却从来不说明这个密度函数是通过什么原理推导出来的。所以我一直搞不明白数学家当年是怎么找到这个概率分布曲线的，又是怎么发现随机误差服从这个奇妙的分布的。我们在实践中大量的使用正态分布，却对这个分布的来龙去脉知之甚少，正态分布真是让人感觉既熟悉又陌生。直到我读研究生的时候，我的导师给我介绍了陈希儒院士的《数理统计学简史》这本书，看了之后才了解了正态分布曲线从发现到被人们重视进而广泛应用，也是经过了几百年的历史。</p>
+<p>正态分布的这段历史是很精彩的，我们通过讲一系列的故事来揭开她的神秘面纱。</p>
+<h2 id="二-邂逅正态曲线的首次发现"><a href="#二-邂逅，正态曲线的首次发现" class="headerlink" title="二. 邂逅，正态曲线的首次发现"></a>二. 邂逅，正态曲线的首次发现</h2><p>第一个故事和概率论的发展密切相关，主角是棣莫弗(Abraham de Moivre, 1667-1754) 和拉普拉斯 (Pierre-Simon Laplace 1749-1827)。拉普拉斯是个大科学家，被称为法国的牛顿；棣莫弗名气可能不算很大，不过大家应该都应该很熟悉这个名字，因为我们在高中数学学复数的时候都学过棣莫弗公式<br>$$(\cos\theta + i \sin\theta)^n = \cos(n\theta) + i \sin(n\theta)$$.<br>而棣莫弗所写的《机遇论》（The doctrine of chances）是概率论发展历史中很重要的一本书。牛顿对棣莫弗十分欣赏,遇到学生向他请教概率方面的问题时，他就说：“这样的问题应该去找棣莫弗，他对这些问题的研究比我深入得多。”<br><img src="/chapter/normal/abraham-de-moivre.jpg" alt="abraham de moivre"><br><img src="/chapter/normal/laplace.jpg" alt="laplace"></p>
+<p><center>棣莫弗和拉普拉斯</center><br>古典概率论发源于赌博，惠更斯(Christiaan Huygens, 1629-1695)、帕斯卡(Blaise Pascal, 1623-1662)、费马(Pierre de Fermat, 1601-1665)、雅可比·贝努利(Jacob Bernoulli, 1654-1705)都是古典概率的奠基人，他们那会研究的概率问题大都来自赌桌上，最早的概率论问题是赌徒梅累在1654年向帕斯卡提出的如何分赌金的问题。统计学中的总体均值之所以被称为期望 (Expectation), 就是源自惠更斯、帕斯卡这些人研究平均情况下一个赌徒在赌桌上可以期望自己赢得多少钱。</p>
+<p>有一天一个哥们，也许是个赌徒，向棣莫弗提了一个和赌博相关的问题：A、B 两人在赌场里赌博，A、B各自的获胜概率是$p,q=1−p$, 赌 n 局。两人约定：若 A 赢的局数 $X&gt;np$, 则 A 付给赌场 $X−np$ 元；若 $X&lt;np$,则B 付给赌场 $np−X$ 元。 问赌场挣钱的期望值是多少。</p>
+<p>问题并不复杂， 本质上是一个二项分布，若 np 为整数，棣莫弗求出最后的理论结果是<br>$$2npqb(n, p, np)$$.<br>其中<br>$$b(n,p,i)=\left(\begin{array}{c}n \\<br> i \end{array}\right)p^iq^{n-i}$$</p>
+<p>是常见的二项概率。但是对具体的n，要把这个理论结果实际计算出数值结果可不是件容易的事，因为其中的二项公式中有组合数.这就驱动棣莫弗寻找近似计算的方法。<br>….</p>
+<blockquote>
+<p>全文详见：正态分布的前世今生 (<a href="/chapter/N1.pdf">上</a>, <a href="/chapter/N2.pdf">下</a>, <a href="/chapter/Nf.pdf">完整版</a>)</p>
+</blockquote>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Data Analysis" />
+          <p class="site-author-name" itemprop="name">Data Analysis</p>
+          <p class="site-description motion-element" itemprop="description">心理统计学</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Data Analysis</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

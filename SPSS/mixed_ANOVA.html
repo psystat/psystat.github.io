@@ -1,0 +1,580 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="假设实验设计了两个因素（自变量）:
+
+当两因素均为Between-subject factors时，用Two-way ANOVA 
+当两因素均为Within-subject factors时，用Two-way repeated-measures ANOVA 
+当一个因素是Between-subject factor，另一个因素是Within-subject factor时，用 mixed-desi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="专题： Mixed-design analysis of variance">
+<meta property="og:url" content="http://yoursite.com/SPSS/mixed_ANOVA.html">
+<meta property="og:site_name" content="Psychological Statistics">
+<meta property="og:description" content="假设实验设计了两个因素（自变量）:
+
+当两因素均为Between-subject factors时，用Two-way ANOVA 
+当两因素均为Within-subject factors时，用Two-way repeated-measures ANOVA 
+当一个因素是Between-subject factor，另一个因素是Within-subject factor时，用 mixed-desi">
+<meta property="og:image" content="http://yoursite.com/images/mixed_ANOVA/1.png">
+<meta property="og:image" content="http://yoursite.com/images/mixed_ANOVA/2.png">
+<meta property="og:image" content="http://yoursite.com/images/mixed_ANOVA/3.png">
+<meta property="og:image" content="http://yoursite.com/images/mixed_ANOVA/4.png">
+<meta property="og:image" content="http://yoursite.com/images/mixed_ANOVA/5.png">
+<meta property="og:image" content="http://yoursite.com/images/mixed_ANOVA/6.png">
+<meta property="og:image" content="http://yoursite.com/images/mixed_ANOVA/7.png">
+<meta property="og:image" content="http://yoursite.com/images/mixed_ANOVA/8.png">
+<meta property="og:image" content="http://yoursite.com/images/mixed_ANOVA/9.png">
+<meta property="og:image" content="http://yoursite.com/images/mixed_ANOVA/10.png">
+<meta property="og:updated_time" content="2016-12-28T08:03:23.151Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="专题： Mixed-design analysis of variance">
+<meta name="twitter:description" content="假设实验设计了两个因素（自变量）:
+
+当两因素均为Between-subject factors时，用Two-way ANOVA 
+当两因素均为Within-subject factors时，用Two-way repeated-measures ANOVA 
+当一个因素是Between-subject factor，另一个因素是Within-subject factor时，用 mixed-desi">
+<meta name="twitter:image" content="http://yoursite.com/images/mixed_ANOVA/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Penulis'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/SPSS/mixed_ANOVA.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+    专题： Mixed-design analysis of variance | Psychological Statistics
+  
+</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Psychological Statistics</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-graduation-cap"></i> <br />
+            
+            Theory
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-spss">
+          <a href="/SPSS" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            SPSS
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-exam">
+          <a href="/exam" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            exam
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Course information
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline">专题： Mixed-design analysis of variance</h2>
+
+
+
+</header>
+
+    
+    
+      <h3 id="假设实验设计了两个因素自变量"><a href="#假设实验设计了两个因素（自变量）" class="headerlink" title="假设实验设计了两个因素（自变量）:"></a>假设实验设计了两个因素（自变量）:</h3><blockquote>
+<ol>
+<li>当两因素均为Between-subject factors时，用Two-way ANOVA </li>
+<li>当两因素均为Within-subject factors时，用Two-way repeated-measures ANOVA </li>
+<li>当一个因素是Between-subject factor，另一个因素是Within-subject factor时，用 mixed-design ANOVA </li>
+</ol>
+</blockquote>
+<h3 id="一个混合设计方差分析的实验设计案例"><a href="#一个混合设计方差分析的实验设计案例" class="headerlink" title="一个混合设计方差分析的实验设计案例"></a>一个混合设计方差分析的实验设计案例</h3><p>2个因素：</p>
+<blockquote>
+<ol>
+<li>Within-subject factor = Time (4)； </li>
+<li>Between-subject factor = Treatments (Group 1 &amp; 2)</li>
+</ol>
+</blockquote>
+<p>具体数据如下： </p>
+<table><tr><td>Subject</td><td>Group</td><td>Time1</td><td>Time2</td><td>Time3</td><td>Time4</td></tr><tr><td>1</td><td>1</td><td>3</td><td>4</td><td>7</td><td>3</td></tr><tr><td>2</td><td>1</td><td>6</td><td>8</td><td>12</td><td>9</td></tr><tr><td>3</td><td>1</td><td>7</td><td>13</td><td>11</td><td>11</td></tr><tr><td>4</td><td>1</td><td>0</td><td>3</td><td>6</td><td>6</td></tr><tr><td>5</td><td>2</td><td>5</td><td>6</td><td>11</td><td>7</td></tr><tr><td>6</td><td>2</td><td>10</td><td>12</td><td>18</td><td>15</td></tr><tr><td>7</td><td>2</td><td>10</td><td>15</td><td>15</td><td>14</td></tr><tr><td>8</td><td>2</td><td>5</td><td>7</td><td>11</td><td>9</td></tr></table>
+
+<h3 id="mixed-design-anova-的计算公式-wikipedia"><a href="#Mixed-design-ANOVA-的计算公式-Wikipedia" class="headerlink" title="Mixed-design ANOVA 的计算公式 Wikipedia"></a>Mixed-design ANOVA 的计算公式 <sup><a href="https://en.wikipedia.org/wiki/Mixed-design_analysis_of_variance" target="_blank" rel="external">Wikipedia</a></sup></h3><table><tr><td>Source</td><td>SS</td><td>df</td><td>MS</td><td>F</td></tr><tr><td>Between-subjects</td><td> </td><td> </td><td> </td><td> </td></tr><tr><td>Factor<sub>BS</sub></td><td>SS<sub>BS</sub></td><td>df<sub>BS</sub></td><td>MS<sub>BS</sub></td><td>FS<sub>BS</sub></td></tr><tr><td>Error</td><td>SS<sub>BS/E</sub></td><td>df<sub>BS/E</sub></td><td>MS<sub>BS/E</sub></td><td> </td></tr><tr><td>Within-subjects</td><td> </td><td> </td><td> </td><td> </td></tr><tr><td> Factor<sub>WS</sub></td><td>SS<sub>WS</sub></td><td>df<sub>WS</sub></td><td>MS<sub>WS</sub></td><td>F<sub>WS</sub></td></tr><tr><td>Factor<sub>WSxBS</sub></td><td>SS<sub>BSxWS</sub></td><td>df<sub>BSxWS</sub></td><td>MS<sub>BSxWS</sub></td><td>F<sub>BSxWS</sub></td></tr><tr><td>Error</td><td>Factor<sub>WS/E</sub></td><td>df<sub>WS/E</sub></td><td>MS<sub>WS/S</sub></td><td></td></tr><td>Total</td><td>SS<sub>T</sub></td><td>df<sub>T</sub></td><td> </td><td></td></table>
+
+<p>其中 </p>
+<blockquote>
+<p>$F_{BS} = \frac{MS_{BS}}{MS_{BS/E}}$,<br>$F_{WS} = \frac{MS_{WS}}{MS_{WS/S}}$,<br>$F_{BS\times WS} = \frac{MS_{BS \times WS}}{MS_{WS/E}}$.</p>
+</blockquote>
+<p>相应的自由度计算如下：</p>
+<blockquote>
+<p>df<sub>BS</sub> = R – 1<br>df<sub>BS(Error)</sub>= N<sub>k</sub> – R<br>df<sub>WS</sub> = C – 1<br>df<sub>BSxWS</sub> = (R – 1)(C – 1)<br>df<sub>WS(Error)</sub> = (N<sub>k</sub> – R)(C – 1) </p>
+</blockquote>
+<p>其中R为Between-subject的水平数，N<sub>k</sub>为被试数，C为Within-subject的测试次数。因此，以上例子中，R＝2，N<sub>k</sub>＝8，C＝4。则:</p>
+<blockquote>
+<p>df<sub>BS</sub> = R – 1=2-1=1<br>df<sub>BS(Error)</sub>= N<sub>k</sub> – R = 8-2=6<br>df<sub>WS</sub> = C – 1 =4-1=3<br>df<sub>BSxWS</sub> = (R – 1)(C – 1)=(2-1)(4-1)=3<br>df<sub>WS(Error)</sub> = (N<sub>k</sub> – R)(C – 1)=(8-2)(4-1)=18</p>
+</blockquote>
+<p><strong>在SPSS中的运行Mixed-measuredANOVA的步骤如下</strong>：</p>
+<blockquote>
+<p>打开对话框：Analyze - General Linear Model - Repeated Measures</p>
+</blockquote>
+<p><img src="/images/mixed_ANOVA/1.png" alt="1"></p>
+<blockquote>
+<p>定义Within-subject factor (name &amp; level)</p>
+</blockquote>
+<p><img src="/images/mixed_ANOVA/2.png" alt="2"></p>
+<blockquote>
+<p>加入Within-subject variables</p>
+</blockquote>
+<p><img src="/images/mixed_ANOVA/3.png" alt="3"></p>
+<blockquote>
+<p>定义Between-subject factors</p>
+</blockquote>
+<p><img src="/images/mixed_ANOVA/4.png" alt="4"></p>
+<blockquote>
+<p>画边际均值图（plots）</p>
+</blockquote>
+<p><img src="/images/mixed_ANOVA/5.png" alt="5"><br><img src="/images/mixed_ANOVA/6.png" alt="6"></p>
+<blockquote>
+<p>选择要输出的数据（opition）</p>
+</blockquote>
+<p><img src="/images/mixed_ANOVA/7.png" alt="7"></p>
+<blockquote>
+<p>主效应及交互效应输出，及边际均值图，根据球形检验(Mauchly’s Test of Sphericity)的结果，如果p&gt;0.05,说明数据符合球形假设条件，可按单因素方差分析方法处理；如果p&lt;0.05,说明数据不符合球形假设条件，不能按单因素方差分析方法处理，宜用另外三种$\epsilon$校正方法Greenhouse-Geisser,Huynh-Feldt和Lower-bound对一元方差分析进行校正(对相应的F值进行校正)。</p>
+</blockquote>
+<p><img src="/images/mixed_ANOVA/8.png" alt="8"><br><img src="/images/mixed_ANOVA/9.png" alt="9"></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/images/mixed_ANOVA/10.png" alt="10"></h2>
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Data Analysis" />
+          <p class="site-author-name" itemprop="name">Data Analysis</p>
+          <p class="site-description motion-element" itemprop="description">心理统计学</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Data Analysis</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

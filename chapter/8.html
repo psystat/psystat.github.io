@@ -1,0 +1,738 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1. 假设检验的过程和逻辑
+1.1 假设检验的过程和逻辑
+1.2 假设检验在前计算机时代发展的一些概念和步骤
+1.2.1 假设检验的逻辑步骤
+1.2.2 关于”临界值”的注
+
+
+
+
+2 对于正态总体均值的检验
+2.1 根据一个样本对其总体均值大小进行检验
+2.2 根据来自两个总体的独立样本对其总体均值的检验
+2.3 成对样本的问题
+2.4 关于正态性检验的问题
+
+
+3 对于比例的检验
+3.1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="第八章 假设检验">
+<meta property="og:url" content="http://yoursite.com/chapter/8.html">
+<meta property="og:site_name" content="Psychological Statistics">
+<meta property="og:description" content="1. 假设检验的过程和逻辑
+1.1 假设检验的过程和逻辑
+1.2 假设检验在前计算机时代发展的一些概念和步骤
+1.2.1 假设检验的逻辑步骤
+1.2.2 关于”临界值”的注
+
+
+
+
+2 对于正态总体均值的检验
+2.1 根据一个样本对其总体均值大小进行检验
+2.2 根据来自两个总体的独立样本对其总体均值的检验
+2.3 成对样本的问题
+2.4 关于正态性检验的问题
+
+
+3 对于比例的检验
+3.1">
+<meta property="og:updated_time" content="2017-06-06T03:04:12.624Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第八章 假设检验">
+<meta name="twitter:description" content="1. 假设检验的过程和逻辑
+1.1 假设检验的过程和逻辑
+1.2 假设检验在前计算机时代发展的一些概念和步骤
+1.2.1 假设检验的逻辑步骤
+1.2.2 关于”临界值”的注
+
+
+
+
+2 对于正态总体均值的检验
+2.1 根据一个样本对其总体均值大小进行检验
+2.2 根据来自两个总体的独立样本对其总体均值的检验
+2.3 成对样本的问题
+2.4 关于正态性检验的问题
+
+
+3 对于比例的检验
+3.1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Penulis'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/chapter/8.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+    第八章 假设检验 | Psychological Statistics
+  
+</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Psychological Statistics</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-graduation-cap"></i> <br />
+            
+            Theory
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-spss">
+          <a href="/SPSS" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            SPSS
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-exam">
+          <a href="/exam" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            exam
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Course information
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline">第八章 假设检验</h2>
+
+
+
+</header>
+
+    
+    
+      <!-- toc -->
+<ul>
+<li><a href="#1-假设检验的过程和逻辑">1. 假设检验的过程和逻辑</a><ul>
+<li><a href="#11-假设检验的过程和逻辑">1.1 假设检验的过程和逻辑</a></li>
+<li><a href="#12-假设检验在前计算机时代发展的一些概念和步骤">1.2 假设检验在前计算机时代发展的一些概念和步骤</a><ul>
+<li><a href="#121-假设检验的逻辑步骤">1.2.1 假设检验的逻辑步骤</a></li>
+<li><a href="#122-关于临界值的注">1.2.2 关于”临界值”的注</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2-对于正态总体均值的检验">2 对于正态总体均值的检验</a><ul>
+<li><a href="#21-根据一个样本对其总体均值大小进行检验">2.1 根据一个样本对其总体均值大小进行检验</a></li>
+<li><a href="#22-根据来自两个总体的独立样本对其总体均值的检验">2.2 根据来自两个总体的独立样本对其总体均值的检验</a></li>
+<li><a href="#23-成对样本的问题">2.3 成对样本的问题</a></li>
+<li><a href="#24-关于正态性检验的问题">2.4 关于正态性检验的问题</a></li>
+</ul>
+</li>
+<li><a href="#3-对于比例的检验">3 对于比例的检验</a><ul>
+<li><a href="#31-对于总体比例的检验">3.1 对于总体比例的检验</a></li>
+<li><a href="#32-对于连续变量比例的检验">3.2 对于连续变量比例的检验</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<blockquote>
+<p><a href="/chapter/chapter08.pdf">课件下载</a></p>
+</blockquote>
+<p>在航天火箭发射前, 没有任何人能够事先证明火箭发射是安全的, 人们最多只能够说用现有手段没有发现问题. 但是, 只要发现一个影响安全发射的问题, 那就是问题, 火箭就不能发射. 这说明, 企图肯定什么事物很难, 而否定却要相对容易得多. 物理学以及其他科学都是在否定中发展的, 这也是假设检验背后的哲学. 在所有学科中, 只有纯粹数学是在一定公理系统下依赖肯定式演绎思维发展的, 各种科学都是在一个接一个地根据观测或实验结果否定各种假说或者理论的基础上发展的. </p>
+<p>假设检验是一种方法, 目的是为了判断一个关于总体特征的定量的断言（假设）的真实性. 人们通过从总体中抽出的随机样本来计算适当的统计量来检验一个假设. 如果得到的统计量的实现值在假设为真时应该是罕见的（小概率事件）, 则有理由拒绝这个假设.</p>
+<p>在假设检验中, 一般要设立一个原假设（上面的“火箭发射是安全的”就是一个例子）, 而设立该假设的动机主要是企图利用人们掌握的反映现实世界的数据来找出假设与现实之间的矛盾, 从而否定这个假设, 并称该检验<strong>显著(significant)</strong>. 在多数统计实践中（除了理论探讨之外）的假设检验都是以否定原假设为目标. 如果否定不了, 那就说明证据不足, 无法否定原假设. 但这不能说明原假设正确. 就像用一两个仪器没有发现火箭有问题还远不能证明火箭是安全的那样.</p>
+<p>本章主要讨论关于连续变量总体均值和基于二项分布的总体比例的假设检验.</p>
+<h2 id="1-假设检验的过程和逻辑"><a href="#1-假设检验的过程和逻辑" class="headerlink" title="1.    假设检验的过程和逻辑"></a>1.    假设检验的过程和逻辑</h2><h3 id="11-假设检验的过程和逻辑"><a href="#1-1-假设检验的过程和逻辑" class="headerlink" title="1.1 假设检验的过程和逻辑"></a>1.1 假设检验的过程和逻辑</h3><blockquote>
+<p>例1 (数据：sugar.txt ) 一个顾客买了一包标有500g重的红糖, 觉得份量不足, 于是找到监督部门, 当然他们会觉得一包份量不够可能是随机的. 于是监督部门就去商店称了50包红糖, 得到样本均值（平均重量）是498.35g, 这的确比500g少,  但这是不是仅仅是由于随机误差造成的呢？这是否能够说明厂家生产的这批红糖平均起来不够份量呢？首先, 可以画出这些重量的直方图（图8.1). 这个直方图看上去像是正态分布的样本. 于是不妨假定这一批袋装红糖呈正态分布.</p>
+</blockquote>
+<p>图8.1是用下面R语句画的:</p>
+<pre><code>weight = scan(&quot;sugar.txt&quot;) #读入数据  
+hist(weight,main=&quot;Histogram of Sugar Weight&quot;)
+</code></pre><p>首先要提出一个原假设, 比如例8.1的红糖重量问题, 原假设可为均值等于500g($\mu$=500). 这种原假设也称为<strong>零假设(null hypothesis)</strong>, 记为$H_0$. 与此同时必须提出<strong>备选假设（或称为备择假设, alternative hypothesis)</strong>,  比如总体均值小于500g($\mu \prec$ 500). 备选假设记为$H_1$或$H_a$. 形式上, 上面的关于总体均值的几相对于H1的检验记为<br>$$<br>H_0:  \mu = 500  \Leftrightarrow H_1: \mu \prec 500<br>$$<br>这里符号”$\Leftrightarrow$“就是相应于英文versus, 类似于甲队对乙队比赛的”对”字. 备选假设的不等式应该按照实际数据所代表的方向来确定, 即它通常是被认为可能比零假设更加符合数据所代表的现实. 比如上面的H1为$\mu \leq 500$, 这意味着, 至少样本均值应该小于500, 至于是否显著, 依检验结果而定. 检验结果显著意味着有理由拒绝零假设. 因此假设检验也被称为<strong>显著性检验(significant test)</strong>.</p>
+<p>有了两个假设, 就要根据数据来对它们进行判断. 数据的代表是作为其函数的统计量, 它在检验中被称为<strong>检验统计量(test statistic)</strong>. 根据<strong>零假设</strong>（不是备选假设！）就可以得到该检验统计量的分布, 然后再看这个统计量的数据实现(realization) 属不属于小概率事件出现了. 也就是说把数据代入检验统计量, 看其值是否落入零假设下的小概率范畴, 如果的确是小概率事件, 那么就有可能拒绝零假设, 或者说”该检验显著”, 否则说没有足够证据拒绝零假设, 或者说”该检验不显著”.</p>
+<p>注意: 在本书所涉及的问题中, <strong>零假设和备选假设在假设检验中并不对称</strong>. 因检验统计量的分布是从零假设导出的, 因此, 如果发生矛盾, 就对零假设不利了. 不发生矛盾也不能说明零假设没有问题, 只能说证据不足以拒绝零假设. </p>
+<p>在零假设下, 检验统计量取其实现值及（沿着备选假设的方向）更加极端值的概率称为<strong>p值(p-value)</strong>. 为了说明上面定义的含义, 就本章将涉及的单边和双边检验问题而言, 假定某检验统计量T的样本实现值为t. 如果T越大就越有利于备选假设, 则p值等于零假设下统计量T取其实现值及更极端值的概率$P_ {H_0}(T\geq t)$; 类似地, 如果T越小就越有利于备选假设, 则p值等于$P_ {H_0}(T\leq t)$; 而如果绝对值|t|越大就越有利于备选假设, 则p值等于$P_ {H_0}(|T|\geq |t|)$. 可以看出, p值和检验统计量的实现值以及备选假设的方向有关. 如果得到很小的p值, 就意味着在零假设下小概率事件发生了. 如果小概率事件发生, 是相信零假设, 还是相信数据呢？当然多半是相信数据. 于是就拒绝零假设. 但在零假设正确时, 小概率事件也还是可能发生, 仅仅是发生的概率很小罢了. 拒绝正确零假设的错误常被称为<strong>第一类错误(type I error)</strong>. 犯第一类错误的概率可以认为等于p值, 或者不大于事先设定的显著性水平$\alpha$.</p>
+<p>那什么是第二类错误呢？那是备选假设正确时没能拒绝零假设的错误, 称为<strong>第二类错误(type II error)</strong>. 在本书的假设检验问题中, 由于备选假设不是一个点所以无法算出犯第二类错误的概率.</p>
+<p>另一个概念就是检验的<strong>势(power)</strong>, 对于统计学家来说, 检验的势就是当备选假设正确时, 该检验拒绝零假设的概率. 强势检验也称为高效率检验. 检验的势越强越好.</p>
+<p>零假设和备选假设哪一个正确, 是确定性的, 没有概率可言. 而可能犯错误的是人. 涉及假设检验的犯错误的概率就是犯第一类错误的概率和犯第二类错误的概率. 负责任的态度是无论做出什么决策, 都应该给出该决策可能犯错误的概率.</p>
+<p>到底p值要多小时才能够拒绝零假设呢？也就是说, 需要有什么是小概率的标准.这要看具体应用的需要. 但在一般的统计书和软件中, 使用最多的标准是在零假设下（或零假设正确时）根据样本所得的数据来拒绝零假设的概率应小于0.05, 当然也可能是0.01, 0.005, 0.001等等. 这种事先规定的概率称为<strong>显著性水平(significant level)</strong>, 用字母$\alpha$来表示. $\alpha$并不一定越小越好, 因为这很可能导致不容易拒绝零假设, 使得犯第二类错误的概率增大. 当p值小于或等于$\alpha$时, 就拒绝零假设. 所以, $\alpha$是所允许的犯第一类错误概率的最大值. 当p值小于或等于$\alpha$时, 就说这个检验是显著的. 无论统计学家用多大的$\alpha$作为显著性水平都不能脱离实际问题的背景. 统计显著不一定等价于实际显著,反过来也一样. </p>
+<p>实际上, 多数计算机软件仅仅给出p值, 而不给出一个确定的$\alpha$. 这有很多方便之处. 比如$\alpha$= 0.05, 而假定所得到的p值等于0.001. 这时如果采用p值作为新的显著性水平, 即新的$\alpha$= 0.001, 于是就可以说, 在显著性水平为0.001时, 拒绝零假设. 这样, 拒绝零假设时犯错误的概率实际只是于分之一而不是旧的$\alpha$所表明的百分之五. 在这个意义上, p值又称为<strong>观测的显著性水平(observed significant level)</strong>.  在统计软件输出p值的位置, 有的用”p-value”,  有的用significant的写”Sig”就是这个道理. 根据数据产生的p值来减少$\alpha$的值以展示结果的精确性总是没有害处的. 这好比一个身高180厘米的男生, 可能愿意被认为高于或等于180厘米, 而不愿意说他高于或等于155厘米, 虽然这第二种说法数学上没有丝 毫错误.</p>
+<p>在前计算机时代, 在假设检验中从若干显著性水平中选择是因为无法计算p值, 而教科书及手册只能提供相应于有限$\alpha$值的表格. 这时, $\alpha$取值为0.05, 0.01, 0.005, 0.001等简洁形式的值也是很自然的. 不能想象一个表格是用$\alpha$=0.009753之类的显著性水平制成. 但今天的p值则可能是任何非负值, 因此, 一些现在的教科书还是引进满足人们某种心理的$\alpha$值来和不那么整洁的p值比较. </p>
+<p>在一些中国出版的统计教科书中会有不能拒绝零假设就“接受零假设”的说法. 这种说法是不严格的. 首先, 如果你说“接受零假设“, 那么就应该负责任地提供接受零假设时可能犯第二类错误的概率. 这就要算出在备选假设正确的情况下错误地接受零假设的概率. 但是, 这只有在备选假设仅仅是一个与零假设不同的确定值（而不是范围）时才有可能.</p>
+<p>多数基本统计教科书的备选假设是一个范围, 例如在前面例子提到的检验问题$H_0:  \mu = 500  \Leftrightarrow H_1: \mu \prec 500$的情况. 这时根本无法确定犯第二类错误的概率.在许多诸如应用回归分析等领域的教科书中, 也往往把一系列不能拒绝零假设的检验当成接受这些假设的通行证. 比如不能拒绝某样本的正态性就变成了证明了该样本是正态的等等.<br>其实不能拒绝这些零假设仅仅说明根据所使用的检验方法（或检验统计量）和当前的数据没有足够证据拒绝这些假设而已. 对于同一个假设检验问题, 往往都有多个检验统计最, 而且人们还在构造更优良的检验统计量. 人们不可能把所有目前存在的和将来可能存在的检验都实施. 因此, 在不能拒绝零假设时, 只能够说, 按照目前的证据和检验方法, 不足以拒绝零假设而已, 而零假设仍然是一个数学假定. 后面将会用例子说明”接受零假设”的说法是不妥当的.<br><strong>统计工作者必须给用户一个没有偏见的信息, 而不是代替用户做没有指明风险的决策.</strong></p>
+<pre><code>思考一下
+</code></pre><ol>
+<li>如果零假设是“某人从来不骂人”, 要证明这一假设容易吗？但只要发现其骂过一次, 这个假设就可以否定了. 请讨论科学研究中的类似情况. </li>
+<li>假定你抓住一个刚把凰物扔掉的小偷, 但没有赃物不能证据说明他（她）不是小偷, 只能够说明证据不足. 这和在无法在证据不足时不能说“接受零假设”时有同样的逻辑</li>
+</ol>
+<h3 id="12-假设检验在前计算机时代发展的一些概念和步骤"><a href="#1-2-假设检验在前计算机时代发展的一些概念和步骤" class="headerlink" title="1.2    假设检验在前计算机时代发展的一些概念和步骤"></a>1.2    假设检验在前计算机时代发展的一些概念和步骤</h3><h4 id="121-假设检验的逻辑步骤"><a href="#1-2-1-假设检验的逻辑步骤" class="headerlink" title="1.2.1 假设检验的逻辑步骤"></a>1.2.1 假设检验的逻辑步骤</h4><p>在前计算机时代的课本都会列出下面的假设检验的步骤：</p>
+<ol>
+<li><p>写出零假设和备选假设. 比如对于总体均值的检验, 零假设为企图拒绝的 量, 而备选假设需要看样本均值和零假设均值的相对大小来定. </p>
+</li>
+<li><p>确定检验统计量. 本章都是常用的一些统计量（在计算机时代则选择检验方法计算机会自动按相应公式计算）. </p>
+</li>
+<li><p>确定显著性水平$\alpha$. 这个是你自己根据实际问题的需要来确定. 在前计算机时代, 只能在几个有限值中挑选. 在计算机时代则在下面p值确定之后决定. </p>
+</li>
+<li><p>根据数据计算检验统计量的实现值. 这一步过去要代公式计算（现在计算机会代劳）. </p>
+</li>
+<li><p>得到检验是否显著的结论：<br>(a)    在前计算机时代, 用实现值来比较根据$\alpha$查表得到的“临界值”（下面有说明）, 如果进入了临界值的“否定域”则认为检验显著, 拒绝零假设.<br>(b)    在计算机发展的今天, 计算机会根据实现值计算p值. 如果p值小于或等于0则认为检验显著, 拒绝零假设. </p>
+</li>
+</ol>
+<p>注意：当上面的第(1)款确定之后, 其余皆由计算机自动完成. 这里所列出的几条, 是前计算机时代手工计算的思维和运作步骤.</p>
+<h4 id="122-关于临界值的注"><a href="#1-2-2-关于”临界值”的注" class="headerlink" title="1.2.2 关于”临界值”的注"></a>1.2.2 关于”临界值”的注</h4><p>作为概率的显著性水平的$\alpha$实际上相应于一个检验统计量（比如T)取值范围的一个临界值(critical value)(这里暂时用$t_a$表示）, 它定义为, 统计量取该值或更极端的值的概率等于$\alpha$(比如, $P_ {H_0}(T\geq t_\alpha)=\alpha$, $P_ {H_0}(T\leq t_\alpha)=\alpha$, $P_ {H_0}(|T|\geq |t_\alpha|)=\alpha$, 依备选假设的方向而定）. 也就是说, “统计量的实现值比临界值更极端”等价于”p值小于$\alpha$” . 使用临界值的概念进行的检验不计算p值. 只比较统计量的取值(T = t)和临界值$t_\alpha$的大小. 统计量的实现值比临界值更极端的取值范围也称为”拒绝域”.<br>以例8.1为例, 如果设定显著性水平为$\alpha$=0.005, 那么, 对于自由度为49的t分布相应的临界值为$t_\alpha$＝-2.679952(这不是查表得到的, 而是用R语句</p>
+<pre><code>qt(0.005, 49)
+</code></pre><p>算出的）, 因此, p值小于0.005等价于检验统计量的值（这里是－2.696) 比 $t_\alpha$还要极端, 即小于$t_\alpha$, 这时拒绝域为(-$\infty$, -2.679952).</p>
+<p>使用临界值而不是p值来判断拒绝与否是前计算机时代的产物. 当时计算p值不易, 只采用临界值的概念. 但从给定的$\alpha$求临界值同样也不容易, 好在习惯上仅仅在教科书中列出相应于特定分布的几个有限的$\alpha$(比如 $\alpha$= 0.05, $\alpha$ = 0.025, $\alpha$= 0.01, $\alpha$= 0.005, $\alpha$= 0.001等等）的临界值, 或者根据分布表反过来查临界值（很不方便也很粗糙）. 现在计算机软件大都不给出Q   和临界值, 但都给出p值和统计量的实现值, 让用户自己决定显著性水平是多少. </p>
+<p>显著性水平和临界值的概念都出现于前计算机时代, 但一些教科书还延用至今, 主要企图说明假设检验的逻辑过程. 那时的检验方向、显著性水平（临界值）的确定都是在抽样之前决定的, 但现在（至少在本书涉及到的检验中）则以数据为准,  一般有了数据才确定检验方向, 并根据数据算出p值来做出最后关于检验的决策. </p>
+<h2 id="2-对于正态总体均值的检验"><a href="#2-对于正态总体均值的检验" class="headerlink" title="2    对于正态总体均值的检验"></a>2    对于正态总体均值的检验</h2><h3 id="21-根据一个样本对其总体均值大小进行检验"><a href="#2-1-根据一个样本对其总体均值大小进行检验" class="headerlink" title="2.1    根据一个样本对其总体均值大小进行检验"></a>2.1    根据一个样本对其总体均值大小进行检验</h3><p>假定一个样本来自于均值为$\mu$的正态总体, 人们想检验这个均值是否等于一个确定的数目, 比如说$\mu_0$. 这 就可以利用下面的t检验来实现. 继续看例8.1.</p>
+<blockquote>
+<p>例8.1 (数据：sugar.txt, 继续）监督部门称了50包标有500g重的红糖, 均值是498.35g, 少于 所标的500g. 对于厂家生产的这批红糖平均起来是否够份量, 需要统计检验由于厂家声称每袋500g, 因此零假设为总体均值等于500g(被怀疑对象总是放在零假设）, 而且由于样本均值少于500g(这是怀疑的根据）, 把备选假设定为总体均值少于500g(这种备选假设为单向不等式的检验称为单尾检验, 而备选假设为不等号”$\neq$”的称为双尾检验, 下面会解释）. 即</p>
+</blockquote>
+<p>$$<br>H_0:  \mu = 500  \Leftrightarrow H_1: \mu \prec 500<br>$$<br>而检验统计量就是对均值的某种标准化的<br>$$<br>t = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}<br>$$<br>符号中的$\mu$通常表示为零假设中的均值（这里是500). 在零假设之下（体现在公式中的$\mu_0$), 根据例8.1对总体的正态性假定, 它有自由度为n—1 = 50-1 = 49的t分布. 当然实际上不必代入这个公式去手工计算了, 让计算机去代劳好了, 使用R代码</p>
+<pre><code>x=scan(&quot;sugar.txt&quot;)#读入数据
+t.test(x,m=500,alternative=&quot;less&quot;)
+</code></pre><p>计算结果是t=—2.6962 (也称为t值）, 同时得到p值为0.004793.  看来可以选择显著性水平为0.005, 并宣称拒绝零假设, 而错误拒绝的概率为0.005. 对于这里红糖的具体问题则可以认为, 红糖平均重量为包装上标记的500g是不能接受的, 该数据倾向于支持平均重量少于500g的备选假设. 图8.2给出一个t分布密度函数图, 显示出到底这个t统计量取值在什么位置. 看得出来, 在直观上这也的确是个小概率事件. </p>
+<p>上面例子的备选假设为小于(“&lt;”)某个值. 同样也可能有备选假设为均值大于(“&gt;”)某个值的情况. 这种取备选假设为均值大于或小于某个值的检验称为单尾检验(one- t aile d test, 也称为单侧检验或单边检验）. 下面看一个选假设为均值大于(“&gt;”)某个值的例子. </p>
+<blockquote>
+<p>例8.2 (数据：exh.txt)汽车厂商声称其发动机排放标准的一个指标平均低于20个单位在抽查了 10台发动机之后, 得到下面的排放数据：</p>
+</blockquote>
+<pre><code>17.0 21.7 17.9 22.9 20.7 22.4 17.3 21.8 24.2  25.4
+</code></pre><p>该样本均值为21.13. 究竟能否由此认为该指标均值超过20? 这次的假设检验问题就是<br>$$<br>H_0:  \mu = 20  \Leftrightarrow H_1: \mu \succ 20<br>$$</p>
+<p>和前面的例子的方法类似, 使用R代码</p>
+<pre><code>x=scan(&quot;exh.txt&quot;) #读入数据
+t.test(x,m=20,alternative=&quot;greater&quot;)
+</code></pre><p>计算结果是t = 1.2336, 同时得到p值为0.1243. 这个p值较大, 因此, 没有证据否定零假设. 也可以画出类似于图8.2的尾概率图（图8.3)这时的 t分布的自由度为9.</p>
+<p>从图8.3可以看出, 右边的尾概率不能说是小概率. 如果要是拒绝零假设的话, 犯错误的概率就多于12%(0.1243)了, 因此没有足够证据来拒绝零假设, 或者说该检验不显著.</p>
+<p>注意：在假设检验中往往也用带等号的不等式来表示零假设, 比如上述的检验可记为<br>$$<br>H_0:  \mu = 20  \Leftrightarrow H_1: \mu \succ 20<br>$$<br>但这里用于计算p值的零假设还是$\mu$= 20, 显然, 如果能够拒绝零假设$\mu$= 20, 那么对于任何$\mu$小于20的零假设就更有理由拒绝了. 这和以拒绝零假设为初衷的假设检验思维方式是一致的. 在这种记号下, 在不能拒绝零假设时, 如果用“接受零假设”的说法就更显得不妥了. </p>
+<p>另外, 还有所谓的<strong>双尾检验(two tailed test</strong>, 也称为<strong>双侧检验</strong>或<strong>双边检验</strong>）问题, 即<br>$$<br>H_0:  \mu = \mu_0  \Leftrightarrow H_1: \mu \neq \mu_0<br>$$</p>
+<p>的问题. 显然, 在这种情况下, 尾概率不仅是左边或右边的一个尾概率, 而是两边尾概率之和. 因此如果是一个单尾检验问题, 用了双尾检验的模式, p值就比用单尾检验时大了一倍. 如果在上面例8.2中, 把发动机排放指标例子的检验问题改为是否该发动机的排放指标均值等于20. 检验问题则可以写成<br>$$<br>H_0:  \mu \leq 20  \Leftrightarrow H_1: \mu \neq 20<br>$$<br>这时t统计量还是取原来的值1.2336, 但p值为0.1243$\times$2 = 0.2486. 图8.3就变成图8.4的样子</p>
+<p>这看起来有些怪异. 好端端的单尾检验为什么要用双尾检验？对于这个例子, 的确没有必要进行双尾检验. </p>
+<h3 id="22-根据来自两个总体的独立样本对其总体均值的检验"><a href="#2-2-根据来自两个总体的独立样本对其总体均值的检验" class="headerlink" title="2.2    根据来自两个总体的独立样本对其总体均值的检验"></a>2.2    根据来自两个总体的独立样本对其总体均值的检验</h3><p>和区间估计类似, 也可以做关于两个独立正态总体均值$\mu_1$和$\mu_2$的差异的假设检验. 和一个总体均值的检验类似, 检验统计量也有t分布. 也可以做单尾和双尾检验. 现用下面例子说明</p>
+<blockquote>
+<p>例8.3 (数据：drug.txt)为检测某种药物对攻击性情绪的影响, 对处理组的100名服药者和对照组的150名非服药者进行心理测试, 得到相应的某指标. 人们要检验处理组指标的总体均值$\mu_1$是否大于对照组的指标的总体均值$\mu_2$. 这里, 假定两个总体独立地服从正态分布. 相应的假设检验问题为：</p>
+</blockquote>
+<p>$$<br>H_0:  \mu_1 = \mu_2  \Leftrightarrow H_1: \mu_1 \geq \mu_2<br>$$<br>这也可以写成<br>$$<br>H_0:  \mu_1 - \mu_2 = 0  \Leftrightarrow H_1: \mu_1 - \mu_2 \geq 0<br>$$<br>数据有两个变量, 一个是心理测试变最名ah, 另一个是区分两组人的变量id (1为服药组, 2为对照组）. 使R用代码</p>
+<pre><code>w=read.table(&quot;drug.txt&quot;, header=T) #读入数据
+x=w[w[,2]==1,1;
+y=w[w[,2]==2,1]    #分开两个数据 
+t.test(x,y,alt=&quot;greater&quot;)    #检验
+</code></pre><p>得到t统计量等于0.9419, p值为0.1736. 因此无法拒绝零假设, 即不能得出处理组的平均指标大于对照组的结论. </p>
+<p>说明：与5.3.2节的关于$\mu_1-\mu_2$的置信区间问题一样, 很多经典文献也建议先做方差是否相等的检验（可用R代码 </p>
+<pre><code>var.test(x, y)
+</code></pre><p>实行, 得到相应的p值, 对本例, 该检验p值为0.07327091), 如果p值较大, 则用方差相等的公式（相应于R代码</p>
+<pre><code>t.test(x,y,alt=&quot;greater&quot;,var=T)
+</code></pre><p>), 否则用复杂公式（相应于R代码</p>
+<pre><code>t.test(x,y,alt=&quot;greater&quot;)
+</code></pre><p>). 这是前计算机时代节省计算量的产物. 实际上, 任何两个总体的方差都不可能完全相同, 如果相信数据, 不去检验方差, 直接用方差不等的方法去做, 不会有问题的, 即使方差相等, 结果差别也不大. </p>
+<h3 id="23-成对样本的问题"><a href="#2-3-成对样本的问题" class="headerlink" title="2.3    成对样本的问题"></a>2.3    成对样本的问题</h3><p>经常有所谓<strong>成对样本(paired samples)</strong>问题. 下面看一个例子. </p>
+<blockquote>
+<p>例8.4 (数据：diet.txt)  这里有两列50对减肥数据. 其中一列数据（变量是before) 是减肥前的重量, 另一列（变量是after)是减肥后的重量（单位：公斤）. 人们希望比较50个人在减肥前和减肥后的重量. 这样就有了两个样本, 每个都有50个数目. 这里不能用前面的独立样本均值差的检验, 这是因为两个样本并不独立. 每一个人减肥后的重量都和自己减肥前的重量有关, 但不同人之间却是独立的. 令所有个体减肥前后重量差（减肥 前重量减去减肥后重量）的均值为$\mu_D$, 这样所要进行的检验为</p>
+</blockquote>
+<p>$$<br>H_0:  \mu_D = 0  \Leftrightarrow H_1: \mu_D \geq 0<br>$$<br>人们可以把两个样本中配对的观测值逐个相减, 形成由独立观测值组成的一个样本, 然后用单样本检验方法, 看其均值是否为零. 在相减之后公式和单样本均值检验无异. 当然, 如果直接选用软件中成对样本均值的检验, 就不用事先逐个相减了. 这里也有单尾和双尾检验. 这里用的检验是假定总体分布为正态分布时的t检验 根据R代码</p>
+<pre><code>w=read.table(&quot;diet.txt&quot;, header =T) #读入数据
+t.test(w$before,  w$after,  alt=&quot;greater&quot;, pair =T) #直接检验
+</code></pre><p>或者</p>
+<pre><code>t.test(w$before-w$after, alt=&quot;greater&quot;) #相减后检验
+</code></pre><p>都得到检验统计量t = 3.355, p值为0.0007694. 因此在显著性水平为0.001(甚至0.0008)时, 可以拒绝零假设. 也就是说, 减肥后和减肥前相比, 平均重量显著要轻一些.</p>
+<h3 id="24-关于正态性检验的问题"><a href="#2-4-关于正态性检验的问题" class="headerlink" title="2.4    关于正态性检验的问题"></a>2.4    关于正态性检验的问题</h3><ol>
+<li><p>这里对于总体均值的检验均假定了总体分布的正态性, 但如何检验正态性呢（也只能是拒绝或不拒绝）？最简单实用的方法是用Shapiro正态性检验(Shapiro-Wilk normality test). 它检验：<br>$H_0$: 数据来自正态总体 $\Leftrightarrow$ $H_1$: 数据不是来自正态总体.<br>比如, 对于sugar数据, 在R中读入数据： </p>
+<pre><code>x=scan(&quot;sugar.txt&quot;)
+</code></pre><p>用语句shapiro.test(x), 得到p值为0.4236, 因此没有证据拒绝该变量的正态性.<br>Shapiro检验是一个比较好的检验, 在检验正态性方面一般要优于Kolmogorov­ Smirnov检验.</p>
+</li>
+<li><p>关于检测正态性的直观办法为正态QQ图（不一定准确, ）它是用样本分位数与正态分位数做散点图, 对于sugar数据的样本（如果存在变量x中）, R在中可以用下面语句实现  </p>
+<pre><code>qqnorm(x); 
+qqline(x)
+</code></pre><p>(图8.5). 如果总体是正态的则图上的点应该近似地排成一条直线.</p>
+</li>
+<li>如果正态性假定被拒绝了 那么这里第2节的所有检验就都不适用了, 这时可试试后面介绍的非参数检验方法. 那里对总体的假定很少或者没有. </li>
+<li>后面在回归和其他一些问题中, 也需要一些正态假定, 也可以使用Shapiro检验来判断假定的合理性.</li>
+<li>和任何检验一样, Shapiro检验不能由于p值大就证明一个数据的背景分布为正态. 读者可以试试<pre><code>shapiro.test(1:30)
+shapiro.test(1:50)
+shapiro.test(1:53)
+</code></pre>等语句.<br>实际上, 正整数序列完全不是正态的, 但一直到从1开始的52个整数时, p值才小于0.05.</li>
+</ol>
+<h2 id="3-对于比例的检验"><a href="#3-对于比例的检验" class="headerlink" title="3    对于比例的检验"></a>3    对于比例的检验</h2><h3 id="31-对于总体比例的检验"><a href="#3-1-对于总体比例的检验" class="headerlink" title="3.1    对于总体比例的检验"></a>3.1    对于总体比例的检验</h3><blockquote>
+<p>例8.5 (数据：top.txt) 对于电视节目, 收视率是个重要的指标. 一个对1500人的电话调查表明, 在某一节目播出的时候, 被访的正在观看电视的人中有23%的正在观看这个节目. 现在想知道, 这是否和该节目的制作人所期望的$p_0$= 25% 有显著不足.</p>
+</blockquote>
+<p>这个例子可以看成是一个参数为p的二项分布问题（请不要把这个p和检验中的p值混淆!）. 形式上的假设检验问题是</p>
+<p>$H_0$:    p=0.25 $\Leftrightarrow$    $H_1$: p&lt;0.25.</p>
+<p>如果n为访问的正在看电视的人数, x为其中观看该节目的人数, 那么样本中的观看比例为$\hat{p}$=x/n=0.23. 这是个二项分布的问题, 只要求出在零假设为二项分布Bin(n, 0.25)时, 概率P(x&lt;0.23n)就得到p值, 用R语句</p>
+<pre><code>pbinom(0.23*1500, 1500, 0.25)
+</code></pre><p>得到：在n=1500时, p值为0.0384).<br>或者直接用R精确检验语旬</p>
+<pre><code>binom.test(0.23*1500, 1500, 0.25, alt=&quot;less&quot;)
+</code></pre><p>得到同样结果.</p>
+<p><strong>历史上的近似方法</strong>. 在n很大时, 可以用大样本正态近似,那时检验统计量则是在零假设下当大样本时近似有标准正态分布的统计量<br>$$<br>z =    \frac{\hat{p}-p_0}{ \sqrt{ \frac{p_0(1-p_0)}{n} } } = \frac{0.23-0.25}{ \sqrt{ \frac{0.25(1-0.25)}{n} } }<br>$$<br>这个数值用手算也不费力气. 实际上, 对于n=1500, 前面用过的R函数</p>
+<pre><code>prop.test()
+</code></pre><p>就是基于这个公式（在做了连续性修正之后) 算出p值为0.03929, 而不做连续性修正直接用公式得到的p值为0.03681914.<br><strong>给出样本量的情况</strong>. 请注意, 前面第7章提起过即使被访者的百分比$\hat{p}$都一样, 但样本少的信息就少. 对于假设检验也是一样. 样本量对于假设检验的结果就十分重要. 对于本例如果只知道百分比, 下面看看不同的样本量会得到什么结果（假定$\hat{p}$ = x/n = 0.23不变）. </p>
+<ol>
+<li>假定样本景为n=1500(和数据给的一样）, 已经知道精确检验得到的p值为0.0384, 而（连续性修正后的）正态近似的p值为0.03929. 因此可以认为（如果选显著性水平为0.05的话）说收视率有25%是过分了, 即拒绝零假设. </li>
+<li>假定样本量为n = 100, 那么, 上面的检验通过计算得到的精确p值为0.371, 用语句<pre><code>pbinom(O.23*100, 100, 0.25)
+</code></pre>而（连续性修正后的）正态近似的检验得到的p值为0.3645, R语句为<pre><code>prop.test(0.23*100, 100,. 25,alt=&quot;less&quot;)
+</code></pre>因此, 没有足够的理由拒绝收视率有25%的零假设（如果选显著性水平为0.05的话）. </li>
+</ol>
+<p>读者已经注意到了, 精确检验、利用公式的近似检验以及用连续性修正的近似检验的三种结果都不一样. 在计算机软件很方便的今天, 当然尽量用精确检验了, 而软件通常会自动在样本量太大时自动转换成使用某种连续性修正的近似（不仅仅对正态近似）检验. 代近似公式计算是计算机不发达时的遗产. </p>
+<p>前面对总体比例的检验所用的公式利用了二项分布的大样本正态近似, 怎样才能够算是大样本呢？这里只给出一个必要条件, 这和第7章求比例的置信区间时大样本的近似标准类似, 即当区间<br>$$<br>p_0 \pm 3\sqrt{\frac{p_0(1-p_0)}{n}}<br>$$<br>完全包含在(0,1)区间内部时, 一般就近似地认为样本足够大, 能够用正态近似. 另外, 关于比例的检验除了例子中的左边单尾检验之外, 还有右边的单尾检验和双尾检验这与均值的检验类似详情请看后面的公式.</p>
+<p>对于两个样本, 也有关于两个总体比例之差$p_1-p_2$的检验. 还拿收视率为例, 如果节目甲的样本收视率为20%($\hat{p_1} = x_1/n_1$ = 0.20), 而节目乙的收视率为21%($\hat{p_2} = x_2/n_2$ = 0.21), 是不是节目甲的总体收视率就真的低于节目乙？这就是检验问题<br>$$H_0: p_1 — p_2 = D_0  \Leftrightarrow    H_1 : p1 — p2 \prec 0$$<br>这里的零假设意味着节目甲和节目乙收视率相等. 检验统计量同样不复杂. 假定$n_1$= 1200, $n_2$=1300.  使用精确检验的R语句为</p>
+<pre><code>binom.test(c(0.2*1200, 0.21*1300),c(1200,1300),alt=&quot;less&quot;)
+</code></pre><p>得到p值为0.07882. 这说明对于显著性水平$\alpha$=0.05, 没有足够证据拒绝零假设. </p>
+<p><strong>历史上的近似方法</strong>. 传统的教科书都表明, 该检验统计僵在零假设下在大样本时为具有近似标准正态分布的统计量<br>$$<br>z =    \frac{(\hat{p_1}-\hat{p_2})-D_0}{ \sqrt{ \frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2} } } = \frac{(0.20-0.21)-0}{ \sqrt{ \frac{0.2(1-0.2)}{1200}+ \frac{0.21(1-0.21)}{1300} } }<br>$$</p>
+<p>根据这个公式, “手算“也可以得到结果, 由此得到p值等于0.2679. 因此, 在显著性水平即使是0.1时, 也没有足够证据可以拒绝”节目甲和节目乙收视率相等”的零假设. 用使用连续性修正的R语句</p>
+<pre><code>prop.test(c(0.2*1200,0.21*1300), c(1200,1300),alt=&quot;less&quot;)
+</code></pre><p>得到检验的p值为0.2847. 这个结果和不用连续性修正的差不多, 但和精确检验的0.07882还是很不同 这再次表明,传统的套用近似数学公式的算法, 即使有计算机软件, 也最好不用, 能用精确检验就一定首先使用. </p>
+<h3 id="32-对于连续变量比例的检验"><a href="#3-2-对于连续变量比例的检验" class="headerlink" title="3.2    对于连续变量比例的检验"></a>3.2    对于连续变量比例的检验</h3><p>有时需要检验收入低于某个水平的人占有的比例p是否和预期的$p_0$一样. 这里的原理和3.1节一样, 只要把大于某水平的观测值看作Bernoulli试验的”成功”而把小于某水平的观测值看成”失败”, 就回到二项分布的问题了. 当然, 用不着把这些连续变噩的观测值都变成”成功”和“失败”之后, 再数各有多少. 统计软件会替你做所有的事情下面通过一个例子来说明</p>
+<blockquote>
+<p>例8.6  某微生物的寿命问题（数据：life.txt ) 这里有某微生物在一种污染环境下生存的寿命数据（单位：小时）</p>
+</blockquote>
+<pre><code>2.12 2.21 0.26 0.04 0.27 2.12 0.42 1.73 0.22 0.12 1.89 0.72 1.73 0.26 1.99
+0.28 0.87 0.33 5.65 0.18 1.60 3.13 0.96 0.73 0.74 1.52 0.18 0.85 1.49 0.31
+1.01 1.51 1.79 2.30 0.02 0.06 1.44 0.08 0.14 1.14 0.01 0.15 1.50 0.14 0.69
+3.45 1.05 0.47 0.06 0.16 0.13 1.15 0.04 1.89 0.34 0.08 0.24 2.64 0.95 0.14
+</code></pre><p>问题是存活时间低于2小时的是否少于70%(存活时间多于2小时的是否多于30%)? 因此, 问题的零假设为存活时间低于2小时的少于或等于70%, 而备选假设为存活时间低于2小时的多于70%. 该检验用数学语言表示为, 对于 $p_0$ = 0.7,</p>
+<p>$$H_0: p = p_1 \Leftrightarrow H_1: p\succ p_0$$</p>
+<p>使用R语句</p>
+<pre><code>x=scan(&quot;life.txt&quot;)   #读入数据
+binom.test(sum(x&lt;2),60,0.7,alter=&quot;greater&quot;)  #检验
+</code></pre><p>可得p值等于0.002208, 而且还表明活不到两小时的有52个. 因此, 可以拒绝”存活时间低于2小时的少于70%”的零假设. </p>
+<p>这个检验的假设还可以有另一种等价形式. 前面章节介绍过样本和总体的$\alpha$分位数的概念. 例8.6的检验问题等价于检验0.7分位数q是等于2($q_0$=2)还是小于2, 即检验：H0: q=$q_0$=2 $\Leftrightarrow$：H1: q$\prec q_0$=2. 该例的结论是实际存活时间的0.7分位数q小于2小时.</p>
+<p>上面的检验又称为（推广的）符号检验(sign test). 它用不着对总体分布进行任何假定而狭义的符号检验是指上面的$p_0$ = 0.5或者（等价地）$q_0$等于中位数的情况. 通常把符号检验归于非参数检验范畴.</p>
+<blockquote>
+<blockquote>
+<p>摘自 吴喜之, 统计学：从数据到结论.第四版.<br>第六章 简单统计推断：总体参数的假设检验</p>
+</blockquote>
+</blockquote>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Data Analysis" />
+          <p class="site-author-name" itemprop="name">Data Analysis</p>
+          <p class="site-description motion-element" itemprop="description">心理统计学</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Data Analysis</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
