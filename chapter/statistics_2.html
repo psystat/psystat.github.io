@@ -1,0 +1,614 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="定量变量的图表示：直方图、盒形图、茎叶图和散点图
+直方图
+盒形图
+茎叶图
+散点图
+
+
+定性变量的图表示：饼图和条形图
+饼图
+条形图
+Chernoff面孔图
+星图
+
+
+
+
+
+课件下载
+
+当见过一个人后， 你首先对着干人的外表有个印象，比如高矮胖瘦等等，但更详细的也许一时说不出来。然而，当你再看到这个人活着这个人照片时，会马上又认出来。这个说明你的大脑中对这个人除了高矮胖瘦之外还存储来一些其他的信">
+<meta property="og:type" content="website">
+<meta property="og:title" content="第二章 统计图表">
+<meta property="og:url" content="http://yoursite.com/chapter/statistics_2.html">
+<meta property="og:site_name" content="Psychological Statistics">
+<meta property="og:description" content="定量变量的图表示：直方图、盒形图、茎叶图和散点图
+直方图
+盒形图
+茎叶图
+散点图
+
+
+定性变量的图表示：饼图和条形图
+饼图
+条形图
+Chernoff面孔图
+星图
+
+
+
+
+
+课件下载
+
+当见过一个人后， 你首先对着干人的外表有个印象，比如高矮胖瘦等等，但更详细的也许一时说不出来。然而，当你再看到这个人活着这个人照片时，会马上又认出来。这个说明你的大脑中对这个人除了高矮胖瘦之外还存储来一些其他的信">
+<meta property="og:image" content="http://yoursite.com/chapter/hist.png">
+<meta property="og:image" content="http://yoursite.com/chapter/boxplot.png">
+<meta property="og:image" content="http://yoursite.com/chapter/scatter.png">
+<meta property="og:image" content="http://yoursite.com/chapter/pie.png">
+<meta property="og:image" content="http://yoursite.com/chapter/bar.png">
+<meta property="og:image" content="http://yoursite.com/chapter/face.png">
+<meta property="og:image" content="http://yoursite.com/chapter/star.png">
+<meta property="og:updated_time" content="2017-10-23T12:20:19.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第二章 统计图表">
+<meta name="twitter:description" content="定量变量的图表示：直方图、盒形图、茎叶图和散点图
+直方图
+盒形图
+茎叶图
+散点图
+
+
+定性变量的图表示：饼图和条形图
+饼图
+条形图
+Chernoff面孔图
+星图
+
+
+
+
+
+课件下载
+
+当见过一个人后， 你首先对着干人的外表有个印象，比如高矮胖瘦等等，但更详细的也许一时说不出来。然而，当你再看到这个人活着这个人照片时，会马上又认出来。这个说明你的大脑中对这个人除了高矮胖瘦之外还存储来一些其他的信">
+<meta name="twitter:image" content="http://yoursite.com/chapter/hist.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/chapter/statistics_2.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+    第二章 统计图表 | Psychological Statistics
+  
+</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Psychological Statistics</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-graduation-cap"></i> <br />
+            
+            Theory
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-spss">
+          <a href="/SPSS" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            SPSS
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-exam">
+          <a href="/exam" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            exam
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Course information
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline">第二章 统计图表</h2>
+
+
+
+</header>
+
+    
+    
+      <!-- toc -->
+<ul>
+<li><a href="#定量变量的图表示直方图-盒形图-茎叶图和散点图">定量变量的图表示：直方图、盒形图、茎叶图和散点图</a><ul>
+<li><a href="#直方图">直方图</a></li>
+<li><a href="#盒形图">盒形图</a></li>
+<li><a href="#茎叶图">茎叶图</a></li>
+<li><a href="#散点图">散点图</a></li>
+</ul>
+</li>
+<li><a href="#定性变量的图表示饼图和条形图">定性变量的图表示：饼图和条形图</a><ul>
+<li><a href="#饼图">饼图</a></li>
+<li><a href="#条形图">条形图</a></li>
+<li><a href="#chernoff面孔图">Chernoff面孔图</a></li>
+<li><a href="#星图">星图</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<blockquote>
+<p><a href="/chapter/statistics_2.pdf">课件下载</a></p>
+</blockquote>
+<p>当见过一个人后， 你首先对着干人的外表有个印象，比如高矮胖瘦等等，但更详细的也许一时说不出来。然而，当你再看到这个人活着这个人照片时，会马上又认出来。这个说明你的大脑中对这个人除了高矮胖瘦之外还存储来一些其他的信息，只不过一时难以用言语描绘而已，这些信息并不是这个人的全部信息，但能够反映出其某些关键特征。<br>一大堆数目本身也往往会使人眼花缭乱，没有人能够记住那些巨大的数据中的所有数值，但总是可以对数据形成一些印象。有些特征大略了解一下就可以得到。比如，这些数值的大致范围，是定性还是定量的，又多少变量，以及手机该数据的目的等等。<br>实际上，借助于一些图形或简单的运算，还可以了解一个数据的更多特征。<br>本章介绍如何用简单图表来概括数据的某些特征。当然，由于数据是从总体中产生的，其特征也反映了总体的特征，对数据的描述也是对其总体的一个近似的描述。</p>
+<h1 id="定量变量的图表示直方图-盒形图-茎叶图和散点图"><a href="#定量变量的图表示：直方图、盒形图、茎叶图和散点图" class="headerlink" title="定量变量的图表示：直方图、盒形图、茎叶图和散点图"></a>定量变量的图表示：直方图、盒形图、茎叶图和散点图</h1><h2 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h2><p>直方图（histogram）是定量变量最常用的图表之一。其作法是，把横轴分成若干通常等宽度的区间，然后计算数据在各个区间的频数，并在各区间上画出高度与数据在相应区间的频数成比例的矩形条。纵坐标当然也可能是比例，即把频数除以样本量，而不一定是频数，但这并不改变图的形状，而仅仅造成纵坐标单位的不同。</p>
+<blockquote>
+<p>例1 (数据：Billianaires.txt) 该数据为福布斯公司根据直至2012年3月的资料提供的净资产超过10亿美元的世界富豪<a href="http://www.forbes.com/billianaires/list" target="_blank" rel="external">排行榜</a>，展示了世界最富有的1223人（有的包括家族）的名次（Rank，为正整数，越小越富），名字（Name）、净资产（Net.Worth,单位10亿美元）、年龄（Age）、资产来源（Source，有关行业信息）、国籍（Country.of.Citizenship）.也就是说有6个变量，其中，名次、净资产、年龄为定性变量；名字、资产来源及国际为定性变量。我们暂时关系资产和年龄这两个变量。我们可以用直方图来表示着两个变量的数据，使人们能够看出这些数目的大体分布或‘形状’。</p>
+</blockquote>
+<p>下图就是利用这个数据由R软件所画的关于这些富人的年龄和财富的两个直方图。相应的R语言代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">v=read.table(&quot;Billianaires.txt&quot;,sep=&quot;,&quot;,header=T,na.string=&quot;-&quot;) #读数据,数据*.txt加上绝对路径</div><div class="line">par(mfrow=c(1,2)) #准备画两个并排的图，c(1,2)表示一行两列</div><div class="line">hist(v$Age,main=&quot;&quot;,xlab=&quot;Age&quot;)</div><div class="line">hist(v$Net.Worth,main=&quot;&quot;,xlab=&quot;Net Worth&quot;)</div></pre></td></tr></table></figure>
+<p><img src="/chapter/hist.png" alt="histogram"></p>
+<p>(假定读取的文件路径是：D:\R\1, 如果直接把这个路径拷贝到R中会出现错误，因为\是escape character（转义符）， \才是真正的\字符，或者用/)</p>
+<h2 id="盒形图"><a href="#盒形图" class="headerlink" title="盒形图"></a>盒形图</h2><p>比直方图简单一些的事盒型图（boxplot），又称箱图、箱线图、盒子图。下图为用Billianaires.txt数据所绘在中、日、美三个国家的富人年龄的盒形图。相应的R语言代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">w=v[v[,6]==&quot;United States&quot;|v[,6]==&quot;China&quot;|v[,6]==&quot;Japan&quot;,]</div><div class="line">w[,6]=as.character(w[,6])</div><div class="line">boxplot(Age~Country.of.Citizenship,w)</div></pre></td></tr></table></figure>
+<p><img src="/chapter/boxplot.png" alt="boxplot"></p>
+<h2 id="茎叶图"><a href="#茎叶图" class="headerlink" title="茎叶图"></a>茎叶图</h2><p>在上面介绍的直方图和盒形图中，已经看不到数值了，因此很难从图形恢复数据的原貌。下面引进另一种图：茎叶图（stem-and-leaf plots),以例1 数据的中国富人的年龄为例，下面的茎叶图可用R语句实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">stem(v[v[,6]==&quot;China&quot;,4])</div></pre></td></tr></table></figure></p>
+<p>  The decimal point is 1 digit(s) to the right of the |<br>  3 | 0<br>  3 | 899<br>  4 | 0001123344<br>  4 | 5555566666777788888888888889999999<br>  5 | 00111223344<br>  5 | 5556677777788999<br>  6 | 0000012233<br>  6 | 55667789<br>  7 | 01</p>
+<h2 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h2><p>前面的每张图没有显示数量变量之间的关系，如果需要，则可以用散点图（scatter plot）来描述两个（甚至多个）数量变量的关系。对于两个变量来说，在图中，每一个点代表一个观测值，而它的横坐标和纵坐标则分别代表其相应于两个变量的取值，也可以把若干个变量都用纵坐标表示。</p>
+<blockquote>
+<p>例2 (数据： global2000.txt, gl100.txt) 该数据为福布斯公司根据2012年4月之前的资料发布的世界上最大的2000个公司的<a href="http://www.forbes.com/global2000/list" target="_blank" rel="external">排行榜</a>。其中数据global2000.txt为全部名单，而g100.txt为其前100名。变量包括公司的名次（Rank，整数，越小名次月靠前）、公司名称（Company）、所在国家（Country）、销售额（Sales，单位10亿美元）、利润（Profit，单位10亿美元）、资产（Assets，单位10亿美元）、市场价值（Market.Value, 单位10亿美元）。</p>
+</blockquote>
+<p>绘制下图的R代码为（其中identify()为互动式的手工选择函数）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">v=read.table(&quot;g100.txt&quot;,sep=&quot;,&quot;,header=T)</div><div class="line">plot(v$Assets,v$Sales,pch=1,col=1,xlab = &quot;Assets(Billion $)&quot;,ylab = &quot;Sales(Billion $)&quot;,ylim = c(0,600),xlim = c(-100,3000),cex=log(v$Profits))</div><div class="line">title(&quot;Global 100 companys&apos; Assets, Scales and log Profits(size of points)&quot;)</div><div class="line">identify(v$Assets,v$Sales,labels = v$Company)</div></pre></td></tr></table></figure></p>
+<p><img src="/chapter/scatter.png" alt="scatter"></p>
+<h1 id="定性变量的图表示饼图和条形图"><a href="#定性变量的图表示：饼图和条形图" class="headerlink" title="定性变量的图表示：饼图和条形图"></a>定性变量的图表示：饼图和条形图</h1><p>定性变量（或属性变量、分类变量）不能画出直方图、散点图和茎叶图，但可以用图描绘出他们各类的数目或者其他数量特征的比例。<br>仍以例2来说明。</p>
+<h2 id="饼图"><a href="#饼图" class="headerlink" title="饼图"></a>饼图</h2><p>饼图（pie chart）为一个由许多扇形组成的圆，各个扇形的大小比例等于变量各个水平（类）的频数或者是相关数量变量的比例。饼图比条形图简单，描述比例比较直观。但是当变量太多时饼图级不那么好看了。<br>下图表示包含大公司最多的国家中的前十名的公司数目的饼图，它的代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">w=read.table(&quot;global2000.txt&quot;,sep=&quot;,&quot;,header=T)</div><div class="line">ws = sort(table(w$Country),de=T);</div><div class="line">pie(ws[1:10])</div></pre></td></tr></table></figure></p>
+<p><img src="/chapter/pie.png" alt="pie"></p>
+<h2 id="条形图"><a href="#条形图" class="headerlink" title="条形图"></a>条形图</h2><p>从饼图中仅仅看出了各个国家拥有的大公司的比例，而看不出具体数目，为了这个目的，条形图（bar plot）就更为恰当了。<br>与饼图相同的数据去绘制条形图，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">barplot(ws[1:10],cex.names = .8,main = &quot;Number of Companies Among top 10&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="/chapter/bar.png" alt="bar"></p>
+<p>#其他图描述法<br>除了上面介绍的几种图外，还可以采用其他各种图形。下面简单介绍两种。</p>
+<h2 id="chernoff面孔图"><a href="#Chernoff面孔图" class="headerlink" title="Chernoff面孔图"></a>Chernoff面孔图</h2><p>有种很独特的Chernoff面孔图（Chernoff Faces），它把矩阵形式的数据用面孔形式表现出来。不同的面孔体现数据各个变量的不同特征。当然，你必须熟悉这些面孔的各种器官和表情代表数据的什么特征才行。各个变量相遇的器官度量包括面孔长度，面孔宽度，面孔形状，嘴的上下高度，嘴的宽度，鼻子的长度，鼻子的宽度，耳朵的宽度，耳朵的长度等，各种变量的组合就形成面孔的不同表情。<br>下图用销售额、利润、资产及市场价值4个变量来描述世界前10位大公司的Chernoff面孔图，该图需要程序包 TeachingDemos,<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">v=read.table(&quot;g100.txt&quot;,sep=&quot;,&quot;,header=T)</div><div class="line">library(TeachingDemos);</div><div class="line">q=v[1:10,4:7];row.names(q)=v[1:10,2]</div><div class="line">faces(q,nrow=2,ncol=5)</div></pre></td></tr></table></figure></p>
+<p><img src="/chapter/face.png" alt="face"></p>
+<h2 id="星图"><a href="#星图" class="headerlink" title="星图"></a>星图</h2><p>星图（star plot）也称为蜘蛛图或雷达图（spider／radar plot），它把各个变量按照大小向各个方向做射线段，形成星辰形状。这种图比面孔图容易理解，但比较死板。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">stars(q,nrow=2,ncol=5)</div></pre></td></tr></table></figure>
+<p><img src="/chapter/star.png" alt="star"></p>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Data Analysis" />
+          <p class="site-author-name" itemprop="name">Data Analysis</p>
+          <p class="site-description motion-element" itemprop="description">心理统计学</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Data Analysis</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,565 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="如何用少量数字来概括数据？
+数据的‘位置’
+数据的“尺度”
+数据的标准得分
+
+
+
+
+如何用少量数字来概括数据？数据的‘位置’均值,中位数,k百分位数,众数。
+数据的“尺度”
+课件下载
+
+论语有一句话：“不患寡而患不均”，这是指不怕财富少，而怕分配不公平而造成贫富差距太大。贫富、多寡是由位置统计量来描述的，而是否“均”是由尺度统计量（scale statistic）来描述的。尺度统计量是描述数据">
+<meta property="og:type" content="website">
+<meta property="og:title" content="第四章 差异量数">
+<meta property="og:url" content="http://yoursite.com/chapter/statistics_4.html">
+<meta property="og:site_name" content="Psychological Statistics">
+<meta property="og:description" content="如何用少量数字来概括数据？
+数据的‘位置’
+数据的“尺度”
+数据的标准得分
+
+
+
+
+如何用少量数字来概括数据？数据的‘位置’均值,中位数,k百分位数,众数。
+数据的“尺度”
+课件下载
+
+论语有一句话：“不患寡而患不均”，这是指不怕财富少，而怕分配不公平而造成贫富差距太大。贫富、多寡是由位置统计量来描述的，而是否“均”是由尺度统计量（scale statistic）来描述的。尺度统计量是描述数据">
+<meta property="og:image" content="http://yoursite.com/chapter/boxplot_chapter3.png">
+<meta property="og:updated_time" content="2017-03-29T07:51:40.137Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第四章 差异量数">
+<meta name="twitter:description" content="如何用少量数字来概括数据？
+数据的‘位置’
+数据的“尺度”
+数据的标准得分
+
+
+
+
+如何用少量数字来概括数据？数据的‘位置’均值,中位数,k百分位数,众数。
+数据的“尺度”
+课件下载
+
+论语有一句话：“不患寡而患不均”，这是指不怕财富少，而怕分配不公平而造成贫富差距太大。贫富、多寡是由位置统计量来描述的，而是否“均”是由尺度统计量（scale statistic）来描述的。尺度统计量是描述数据">
+<meta name="twitter:image" content="http://yoursite.com/chapter/boxplot_chapter3.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/chapter/statistics_4.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+    第四章 差异量数 | Psychological Statistics
+  
+</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Psychological Statistics</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-graduation-cap"></i> <br />
+            
+            Theory
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-spss">
+          <a href="/SPSS" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            SPSS
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-exam">
+          <a href="/exam" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            exam
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Course information
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline">第四章 差异量数</h2>
+
+
+
+</header>
+
+    
+    
+      <!-- toc -->
+<ul>
+<li><a href="#如何用少量数字来概括数据">如何用少量数字来概括数据？</a><ul>
+<li><a href="#数据的位置">数据的‘位置’</a></li>
+<li><a href="#数据的尺度">数据的“尺度”</a></li>
+<li><a href="#数据的标准得分">数据的标准得分</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2 id="如何用少量数字来概括数据"><a href="#如何用少量数字来概括数据？" class="headerlink" title="如何用少量数字来概括数据？"></a>如何用少量数字来概括数据？</h2><h3 id="数据的位置"><a href="#数据的‘位置’" class="headerlink" title="数据的‘位置’"></a>数据的‘位置’</h3><p>均值,中位数,k百分位数,众数。</p>
+<h3 id="数据的尺度"><a href="#数据的“尺度”" class="headerlink" title="数据的“尺度”"></a>数据的“尺度”</h3><blockquote>
+<p><a href="/chapter/chapter04.pdf">课件下载</a></p>
+</blockquote>
+<p>论语有一句话：“<strong>不患寡而患不均</strong>”，这是指不怕财富少，而怕分配不公平而造成贫富差距太大。<br>贫富、多寡是由位置统计量来描述的，而是否“均”是由<strong>尺度统计量（scale statistic）</strong>来描述的。尺度统计量是描述数据散布，即描述集中与分散程度或变化（spread或variablity）的度量，因此，有人不无道理地建议用“散度统计量”这个名词。统计中有许多尺度统计量。<br>一般来说，数据越分散，尺度统计量的值越大。<br>为了说明，回顾第二章图2：中国、日本和美国的年龄的盒形图，可用看出来，从中位数来说，日本年龄较大，美国次之，中国最小，分布为69，66和49，而均值分布为69.1，65.5和52，但是这三个数据散布范围和模式很不一样。</p>
+<p>最简单的尺度统计量就是<strong>极差（range）</strong>，顾名思义，极差就是极大值和极小值之间的差。第二章例1数据的中日美三国富豪年龄的极差分布为41，52，和69岁，对应的图2种每个盒形图盒子的长度为上下两个四分位数之差，称为<strong>四分位极差或四分位间距（interquantile range）</strong>，它描述了中间半数观测值的散步情况。</p>
+<p>极差和四分位极差实际上各自只依赖于两个值，信息量太少。第二章例1数据的中日美三国富豪年龄的四分位极差分别为11.5，16.5和19.</p>
+<p>另一个常用的尺度统计量为<strong>（样本）标准差（standard deviation）</strong>。它度量样本中各个数值到均值的距离的一种平均。标准差实际上是方差（variance）的平方根。样本方差是由各个观测值的均值距离的平方和除以减去1的样本量。<br>如果记样本中的观测值为x1,…,xn,则样本方差为<br>$$<br>s^2=\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})<br>$$<br>而样本标准差为样本方差的平方根，即s。<br>标准差由于和原始数据量纲一样，因此在数据分析中比方差用得更普遍。<br>显然，如果标准差越大，数据中的观测值就越分散，而小的标准差意味着数据很集中。<br>关于中日美三国富豪的标准差分别是8.4，15.1和13。</p>
+<p>即使出于同一个总体，样本量相同的不同样本也会有不同的均值，这种来自许多不同样本的均值的标准差称为<strong>标准误差（standard error）</strong>，也叫做<strong>均值的标准误差（standard error of mean）</strong>。</p>
+<h3 id="数据的标准得分"><a href="#数据的标准得分" class="headerlink" title="数据的标准得分"></a>数据的标准得分</h3><blockquote>
+<p>例3 （数据：<a href="/chapter/grade.txt">grade.txt</a>）该数据给出两个班（1班和2班）的同一门课程的成绩。假定两个班级水平类似，但是由于两个任课老师的评分标准不同，使得两个班成绩的均值和标准差都不一样。1班分数的均值和标准差分布为78.53和9.43，而二班的均值和标准差分别为70.19和7.00.那么得到90分的1班的A同学是不是比得到82分的2班的B同学成绩更好呢？怎么比较才能合理呢？</p>
+</blockquote>
+<p>虽然这种均值和标准差不同的数据不能够直接比较，但是可以把它们进行标准化，然后再比较标准化后的数据。<br>一个标准化的方法是把某样本原始观测值（亦称得分，score）和该样本均值之差除以该样本的标准差，得到的度量称为标准得分（standard score，又称为z-score）. 即，某观测值$x_i$的标准得分$z_i$定义为<br>$$<br>z_i=\frac{x_i-\bar{x}}{s}<br>$$<br>把各个样本的观测值都换成相应的标准得分，就可以进行比较了。<br>在本例中，<br>A的标准分为(90-78.53)/9.43=1.22<br>B的标准分为(82-70.19)/7=1.69<br>显然，如果两个班级水平差不多，B的成绩应该优于A的成绩，这是在标准化之前的数据中不容易看到的。</p>
+<p>下图展示了着两个班级的原始成绩的盒形图（左边）和标准化之后成绩的标准得分的盒形图（右边）。可以看出，原始数据是在各自的中心值附近，而散布也不一样。但它们的标准得分则在0周围散布，而且散步也差不多。<br>实际上，任何样本经过这样的标准化后，就都变成均值为0、方差为1的样本。<br>标准化后不同样本观测值的比较只有相对意义，没有绝对意义。<br><img src="/chapter/boxplot_chapter3.png" alt="histogram"><br>绘图的R代码为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">w =read.table(&quot;C:/Users/Desktop/grade.txt&quot;,header=T)</div><div class="line">par(mfrow=c(1,2))</div><div class="line">boxplot(grade~class,w,main=&quot;Original Grades&quot;)</div><div class="line">boxplot(standardized~class,w,main=&quot;standardized Grades&quot;)#或 boxplot(w$standardized~w$class,main=&quot;standardized Grades&quot;)</div></pre></td></tr></table></figure>
+<p>标准化后的数据虽然总的尺度和位置都变了，但是数据内部点的相对位置没有变化。<br>计算标准得分仅仅是许多标准化方法中最常见的一种。</p>
+<blockquote>
+<p>极差，四分位极差，标准差，方差，标准得分的R代码如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">diff(range(x))</div><div class="line">diff(quantile(x,c(0.25,0.75)))</div><div class="line">sd(x)</div><div class="line">var(x)</div><div class="line">scale(x)</div></pre></td></tr></table></figure>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Data Analysis" />
+          <p class="site-author-name" itemprop="name">Data Analysis</p>
+          <p class="site-description motion-element" itemprop="description">心理统计学</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Data Analysis</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
