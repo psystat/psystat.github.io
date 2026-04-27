@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>简单线性回归与独立样本t检验</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.8.1/github-markdown.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      background: #f6f8fa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid #d0d7de;
+    }
+
+    .topbar {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .layout {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 24px;
+      padding: 32px 20px;
+    }
+
+    aside {
+      position: sticky;
+      top: 24px;
+      align-self: start;
+      background: #fff;
+      border: 1px solid #d0d7de;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    #toc a {
+      display: block;
+      color: #57606a;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 4px 0;
+    }
+
+    #toc a:hover {
+      color: #0969da;
+    }
+
+    #toc .level-2 {
+      padding-left: 14px;
+    }
+
+    #toc .level-3 {
+      padding-left: 28px;
+    }
+
+    .markdown-body {
+      background: #fff;
+      padding: 48px;
+      border: 1px solid #d0d7de;
+      border-radius: 12px;
+    }
+
+    .math-display {
+      overflow-x: auto;
+      margin: 1em 0;
+    }
+
+    button {
+      border: 1px solid #d0d7de;
+      background: #fff;
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    body.dark {
+      background: #0d1117;
+      color: #c9d1d9;
+    }
+
+    body.dark header,
+    body.dark aside,
+    body.dark .markdown-body,
+    body.dark button {
+      background: #161b22;
+      color: #c9d1d9;
+      border-color: #30363d;
+    }
+
+    body.dark .markdown-body {
+      color-scheme: dark;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
+      }
+
+      .markdown-body {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="topbar">
+      <strong>简单线性回归与独立样本t检验</strong>
+      <button id="themeToggle">暗色模式</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <strong>目录</strong>
+      <nav id="toc"></nav>
+    </aside>
+
+    <main>
+      <article id="content" class="markdown-body"></article>
+    </main>
+  </div>
+
+  <textarea id="md-source" hidden>
+---
+
+### 📚 简单线性回归与独立样本 t 检验
+
+#### 一、 核心结论（先看结果）
+我们要理解一个非常重要的统计学结论：
+&gt; **两独立样本 t 检验，本质上等价于一个只有 0-1 虚拟变量的简单线性回归。**
+
+它们在数学上是完全等价的。算出来的 t 值、p 值和结论完全一致。
+
+---
+
+#### 二、 问题背景：比较两组均值
+假设我们要研究：**男生和女生的平均数学成绩是否不同？**
+
+我们有两组独立样本：
+- **第一组（组 1，如男生）：** 样本量 $n_1$，样本均值 $\bar y_1$，样本方差 $s_1^2$。
+- **第二组（组 2，如女生）：** 样本量 $n_2$，样本均值 $\bar y_2$，样本方差 $s_2^2$。
+
+**目标：** 检验原假设 $H_0: \mu_1 = \mu_2$（两组总体均值相等）。
+
+---
+
+#### 三、 独立样本 t 检验（复习）
+如果假设两组总体方差相同（方差齐性），我们使用合并方差（Pooled Variance）t 检验。
+
+1.  **合并方差 ($s_p^2$)：**
+    $$ s_p^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2} $$
+   这是对两组方差的加权平均，权重是自由度 $n-1$。
+
+2.  **t 统计量：**
+    $$ t = \frac{\bar y_1 - \bar y_2}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} $$
+   自由度 $df = n_1 + n_2 - 2$。
+
+---
+
+#### 四、 直观理解：回归就是分组平均
+在引入复杂的数学公式前，先建立直观认知。
+
+1.  **定义虚拟变量 $X$：**
+    -   男生：$X = 0$
+    -   女生：$X = 1$
+
+2.  **最合理的预测：**
+    -   如果看到 $X=0$（男生），你预测成绩是多少？答：男生平均分 $\bar y_1$。
+    -   如果看到 $X=1$（女生），你预测成绩是多少？答：女生平均分 $\bar y_2$。
+
+3.  **写成公式：**
+    我们希望找到一个公式 $Y = \beta_0 + \beta_1 X$ 来同时表达这两件事。
+    -   当 $X=0$ 时，$Y = \beta_0$。为了等于 $\bar y_1$，所以 $\beta_0 = \bar y_1$。
+    -   当 $X=1$ 时，$Y = \beta_0 + \beta_1$。为了等于 $\bar y_2$，所以 $\beta_1 = \bar y_2 - \bar y_1$。
+
+**结论：** 回归系数 $\beta_1$ 就是两组均值之差。检验 $\beta_1 = 0$ 就等同于检验两组均值是否相等。
+
+---
+
+#### 五、 OLS 推导版（最小二乘法）
+现在我们用标准的最小二乘法（OLS）来推导为什么 $\hat{\beta}_1 = \bar{y}_2 - \bar{y}_1$。
+
+**OLS 思想：** 找到参数 $\beta_0, \beta_1$，使得残差平方和 $S(\beta_0, \beta_1) = \sum (Y_i - \beta_0 - \beta_1 X_i)^2$ 最小。
+
+1.  **一阶条件（求偏导）：**
+    对 $\beta_0$ 和 $\beta_1$ 求偏导并令其为 0。
+    -   $\sum (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) = 0$
+    -   $\sum X_i(Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) = 0$
+
+2.  **代入虚拟变量特性：**
+    由于 $X$ 只有 0 和 1，我们可以利用分组数据的性质。
+    -   设第二组比例 $p = n_2 / n$，则 $\bar{X} = p$。
+    -   计算协方差 $\text{Cov}(X, Y)$ 和方差 $\text{Var}(X)$。
+
+3.  **推导结果：**
+    对于 0-1 变量，可以推导出：
+    $$ \hat{\beta}_1 = \frac{\text{Cov}(X, Y)}{\text{Var}(X)} = \bar{y}_2 - \bar{y}_1 $$
+    $$ \hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X} = \bar{y}_1 $$
+
+---
+
+#### 六、 矩阵形式 OLS 推导版（进阶课堂版）
+这是统计学中更通用的推导方式，适用于任何线性回归，包括我们的特殊情况。
+
+**1. 模型矩阵形式**
+将模型写成矩阵形式：$Y = X\beta + \varepsilon$
+-   **因变量矩阵 $Y$:**
+    $$ \begin{bmatrix} Y_1 \\ Y_2 \\ \vdots \\ Y_n \end{bmatrix} $$
+-   **设计矩阵 $X$ (数据矩阵):**
+    第一列全是 1（对应截距 $\beta_0$），第二列是虚拟变量 $X_i$。
+    $$ X = \begin{bmatrix} 1 &amp; X_1 \\ 1 &amp; X_2 \\ \vdots &amp; \vdots \\ 1 &amp; X_n \end{bmatrix} $$
+-   **参数向量 $\beta$:**
+    $$ \beta = \begin{bmatrix} \beta_0 \\ \beta_1 \end{bmatrix} $$
+
+**2. OLS 估计公式**
+最小二乘解为：
+$$ \hat{\beta} = (X^T X)^{-1} X^T Y $$
+
+**3. 针对 0-1 变量的具体计算**
+因为 $X_i$ 只有 0 或 1，我们可以手动计算 $X^T X$ 和 $X^T Y$。
+
+-   **计算 $X^T X$:**
+    $$ X^T X = \begin{bmatrix} n &amp; \sum X_i \\ \sum X_i &amp; \sum X_i^2 \end{bmatrix} $$
+   由于 $X_i$ 是 0 或 1，$\sum X_i = n_2$（组 2 的样本数），且 $\sum X_i^2 = \sum X_i = n_2$（因为 $1^2=1, 0^2=0$）。
+    所以：
+    $$ X^T X = \begin{bmatrix} n &amp; n_2 \\ n_2 &amp; n_2 \end{bmatrix} $$
+
+-   **计算 $X^T Y$:**
+    $$ X^T Y = \begin{bmatrix} \sum Y_i \\ \sum X_i Y_i \end{bmatrix} $$
+   其中 $\sum X_i Y_i$ 只包含组 2（$X=1$）的 $Y$ 值之和。
+
+-   **求逆与结果：**
+    虽然求逆过程涉及矩阵代数，但最终解会收敛为：
+    $$ \hat{\beta}_0 = \bar{y}_1 $$
+    $$ \hat{\beta}_1 = \bar{y}_2 - \bar{y}_1 $$
+
+**教学意义：** 这证明了无论用标量公式还是矩阵公式，回归在处理分类变量时，本质上就是在计算组间均值的差异。
+
+---
+
+#### 七、 残差平方和（SSE）与误差方差
+这是两者等价的另一个关键证据。
+
+1.  **回归的 SSE：**
+    $$ SSE = \sum (Y_i - \hat{Y}_i)^2 $$
+   -   组 1 的预测值是 $\bar{y}_1$，所以残差平方和是 $(n_1 - 1)s_1^2$。
+   -   组 2 的预测值是 $\bar{y}_2$，所以残差平方和是 $(n_2 - 1)s_2^2$。
+   -   因此：$SSE = (n_1 - 1)s_1^2 + (n_2 - 1)s_2^2$。
+
+2.  **均方误差 (MSE)：**
+    $$ MSE = \frac{SSE}{n - 2} $$
+   这里的自由度是 $n-2$，因为我们估计了两个参数（$\beta_0, \beta_1$）。
+    $$ MSE = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2} $$
+   **这正好就是 t 检验中的合并方差 $s_p^2$！**
+
+---
+
+#### 八、 最终结论
+-   **t 值一致：** 回归系数的 t 检验统计量分母是标准误，代入 MSE 后，公式与独立样本 t 检验完全一致。
+-   **自由度一致：** $n-2 = n_1 + n_2 - 2$。
+-   **本质统一：**
+    &gt; **独立样本 t 检验 = 带一个 0-1 虚拟变量的简单线性回归**
+
+**一句话总结：** t 检验是在比较两组平均数，回归是在估计组别带来的平均变化，它们本质上是同一个统计问题的两种语言。
+  </textarea>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <script>
+    function protectMath(md) {
+      const store = [];
+      let text = md;
+
+      text = text.replace(/\$\$([\s\S]+?)\$\$/g, function(match) {
+        const key = "@@MATH_BLOCK_" + store.length + "@@";
+        store.push({ key, html: '<div class="math-display">' + match + '</div>' });
+        return "\n\n" + key + "\n\n";
+      });
+
+      text = text.replace(/\\\[([\s\S]+?)\\\]/g, function(match) {
+        const key = "@@MATH_BLOCK_" + store.length + "@@";
+        store.push({ key, html: '<div class="math-display">' + match + '</div>' });
+        return "\n\n" + key + "\n\n";
+      });
+
+      text = text.replace(/\\\(([\s\S]+?)\\\)/g, function(match) {
+        const key = "@@MATH_INLINE_" + store.length + "@@";
+        store.push({ key, html: match });
+        return key;
+      });
+
+      text = text.replace(/(^|[^$])\$([^\n$]+?)\$([^$]|$)/g, function(match, before, math, after) {
+        const key = "@@MATH_INLINE_" + store.length + "@@";
+        store.push({ key, html: "$" + math + "$" });
+        return before + key + after;
+      });
+
+      return { text, store };
+    }
+
+    function restoreMath(html, store) {
+      let out = html;
+      store.forEach(function(item) {
+        out = out.split(item.key).join(item.html);
+      });
+      return out;
+    }
+
+    function buildToc() {
+      const toc = document.getElementById("toc");
+      const headings = document.querySelectorAll("#content h1, #content h2, #content h3");
+      toc.innerHTML = "";
+
+      headings.forEach(function(h, index) {
+        const id = "heading-" + index;
+        h.id = id;
+
+        const a = document.createElement("a");
+        a.href = "#" + id;
+        a.textContent = h.textContent;
+        a.className = "level-" + h.tagName.substring(1);
+        toc.appendChild(a);
+      });
+    }
+
+    function render() {
+      const md = document.getElementById("md-source").value;
+
+      const result = protectMath(md);
+      const html = marked.parse(result.text);
+
+      const container = document.getElementById("content");
+      container.innerHTML = restoreMath(html, result.store);
+
+      buildToc();
+
+      if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise([container]);
+      }
+    }
+
+    document.getElementById("themeToggle").addEventListener("click", function() {
+      document.body.classList.toggle("dark");
+      this.textContent = document.body.classList.contains("dark") ? "浅色模式" : "暗色模式";
+    });
+
+    window.addEventListener("DOMContentLoaded", render);
+  </script>
+</body>
+</html>
