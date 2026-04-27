@@ -3,96 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>变量间的关系：探索与预测（从相关到简单线性回归）</title>
+  <title>相关与回归</title>
 
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.8.1/github-markdown.min.css"
-  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.8.1/github-markdown.min.css">
 
   <style>
-    :root {
-      --page-bg: #f6f8fa;
-      --card-bg: #ffffff;
-      --text-color: #24292f;
-      --border-color: #d0d7de;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
-      padding: 32px 16px;
-      background: var(--page-bg);
-      color: var(--text-color);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      background: #f6f8fa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     }
 
-    .page {
-      max-width: 980px;
+    header {
+      background: #fff;
+      border-bottom: 1px solid #d0d7de;
+    }
+
+    .topbar {
+      max-width: 1180px;
       margin: 0 auto;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .layout {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 24px;
+      padding: 32px 20px;
+    }
+
+    aside {
+      position: sticky;
+      top: 24px;
+      align-self: start;
+      background: #fff;
+      border: 1px solid #d0d7de;
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(31, 35, 40, 0.08);
-      overflow: hidden;
+      padding: 16px;
+    }
+
+    #toc a {
+      display: block;
+      color: #57606a;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 4px 0;
+    }
+
+    #toc a:hover {
+      color: #0969da;
+    }
+
+    #toc .level-2 {
+      padding-left: 14px;
+    }
+
+    #toc .level-3 {
+      padding-left: 28px;
     }
 
     .markdown-body {
+      background: #fff;
       padding: 48px;
-      min-height: 100vh;
-    }
-
-    .markdown-body h1,
-    .markdown-body h2,
-    .markdown-body h3,
-    .markdown-body h4,
-    .markdown-body h5,
-    .markdown-body h6 {
-      scroll-margin-top: 24px;
-    }
-
-    .markdown-body blockquote {
-      color: #57606a;
-      border-left: 0.25em solid #d0d7de;
-      background: #f6f8fa;
-      padding: 0.8em 1em;
-      border-radius: 6px;
-    }
-
-    .markdown-body hr {
-      border: 0;
-      height: 1px;
-      background: #d8dee4;
-      margin: 32px 0;
-    }
-
-    .markdown-body table {
-      display: table;
-      width: 100%;
-      overflow: auto;
-    }
-
-    .markdown-body img {
-      max-width: 100%;
-      height: auto;
+      border: 1px solid #d0d7de;
+      border-radius: 12px;
     }
 
     .math-display {
       overflow-x: auto;
-      overflow-y: hidden;
       margin: 1em 0;
     }
 
-    @media (max-width: 767px) {
-      body {
-        padding: 16px 8px;
+    button {
+      border: 1px solid #d0d7de;
+      background: #fff;
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    body.dark {
+      background: #0d1117;
+      color: #c9d1d9;
+    }
+
+    body.dark header,
+    body.dark aside,
+    body.dark .markdown-body,
+    body.dark button {
+      background: #161b22;
+      color: #c9d1d9;
+      border-color: #30363d;
+    }
+
+    body.dark .markdown-body {
+      color-scheme: dark;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
       }
 
       .markdown-body {
-        padding: 24px 18px;
+        padding: 28px 20px;
       }
     }
   </style>
@@ -102,11 +125,7 @@
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
         displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        processEscapes: true
       },
       svg: {
         fontCache: 'global'
@@ -114,12 +133,27 @@
     };
   </script>
 </head>
-<body>
-  <main class="page">
-    <article id="content" class="markdown-body"></article>
-  </main>
 
-  <script id="md-source" type="text/plain">
+<body>
+  <header>
+    <div class="topbar">
+      <strong>相关与回归</strong>
+      <button id="themeToggle">暗色模式</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <strong>目录</strong>
+      <nav id="toc"></nav>
+    </aside>
+
+    <main>
+      <article id="content" class="markdown-body"></article>
+    </main>
+  </div>
+
+  <textarea id="md-source" hidden>
 ---
 
 # 《变量间的关系：探索与预测（从相关到简单线性回归）》
@@ -138,7 +172,7 @@
 
 这些问题表面不同，背后追问的其实是同一件事：
 
-> **两个变量之间是否存在稳定的关系？**
+&gt; **两个变量之间是否存在稳定的关系？**
 
 这里的“关系”，不是日常语言里那种模糊的“好像有关”，而是统计学意义上**可以被描述、比较和检验**的关系。通常来说，我们至少要回答两个问题。
 
@@ -163,7 +197,7 @@
 
 因此，相关分析的核心任务可以概括为一句话：
 
-> **衡量两个变量共同变化的方向与强度。**
+&gt; **衡量两个变量共同变化的方向与强度。**
 
 不过，统计学里并不存在一种“万能相关系数”。面对不同类型的数据，我们要选不同的方法。最常见、也最基础的一种情形是：**两个变量都是连续型变量**。这时最经典的方法就是**Pearson积差相关**。
 
@@ -192,13 +226,13 @@ Pearson相关主要适用于以下情形：
 
 这里的“线性关系”很重要。它的意思不是所有数据点必须完美落在一条直线上，而是说：
 
-> **随着X增加，Y大致稳定地增加，或者大致稳定地减少。**
+&gt; **随着X增加，Y大致稳定地增加，或者大致稳定地减少。**
 
 ## 二、Pearson相关到底在测什么？
 
 Pearson相关背后的核心问题其实很朴素：
 
-> **当一个人在X上高于平均水平时，他在Y上是否也往往高于平均水平？**
+&gt; **当一个人在X上高于平均水平时，他在Y上是否也往往高于平均水平？**
 
 为了回答这个问题，我们先理解一个更基础的概念：**协方差**。
 
@@ -239,7 +273,7 @@ r=\frac{\sum (X-\bar X)(Y-\bar Y)}{(n-1)S_XS_Y}
 
 所以可以用一句话概括：
 
-> **Pearson相关是标准化的协方差。**
+&gt; **Pearson相关是标准化的协方差。**
 
 这也是为什么 \(r\) 的取值总在 \(-1\) 到 \(+1\) 之间。
 
@@ -249,8 +283,8 @@ r=\frac{\sum (X-\bar X)(Y-\bar Y)}{(n-1)S_XS_Y}
 -1 \le r \le 1
 \]
 
-- \(r>0\)：正相关
-- \(r<0\)：负相关
+- \(r&gt;0\)：正相关
+- \(r&lt;0\)：负相关
 - \(r=0\)：没有线性相关
 
 并且：
@@ -275,7 +309,7 @@ Pearson相关**没有统一规定“样本量必须大于30才能用”**。
 
 但样本量越小，结果越不稳定，也越容易受极端值影响。因此，与其死记“30”这个数字，不如记住：
 
-> **Pearson相关能不能放心解释，不只看样本量，还要看散点图、异常值、线性关系是否存在，以及结果是否稳定。**
+&gt; **Pearson相关能不能放心解释，不只看样本量，还要看散点图、异常值、线性关系是否存在，以及结果是否稳定。**
 
 ### **2. 相关不等于因果**
 
@@ -303,11 +337,11 @@ Pearson相关对离群值比较敏感。
 
 一句话概括：
 
-> **Pearson相关是标准化的协方差，它衡量两个连续型变量在线性意义上的共同变化。**
+&gt; **Pearson相关是标准化的协方差，它衡量两个连续型变量在线性意义上的共同变化。**
 
 ---
 
-# 第二节：等级变量的秩序 —— 秩相关（Spearman & Kendall）
+# 第二节：等级变量的秩序 —— 秩相关（Spearman &amp; Kendall）
 
 并不是所有心理学数据都适合直接用Pearson相关。很多时候，我们面对的是：
 
@@ -349,7 +383,7 @@ Pearson相关对离群值比较敏感。
 
 更准确的说法是：
 
-> **Spearman相关不是通过‘把数据变正态’来替代Pearson，而是通过‘把原始分数改写为秩’，把关注点从‘差多少’改成‘排序是否一致’。**
+&gt; **Spearman相关不是通过‘把数据变正态’来替代Pearson，而是通过‘把原始分数改写为秩’，把关注点从‘差多少’改成‘排序是否一致’。**
 
 所以，Spearman能在偏态数据上使用，不是因为秩“变正态”了，而是因为它**不再依赖原始分数的分布形状**。
 
@@ -370,7 +404,7 @@ Pearson相关对离群值比较敏感。
 
 ### 基本思想
 
-> **Spearman相关，本质上是“对两个变量的秩做Pearson相关”。**
+&gt; **Spearman相关，本质上是“对两个变量的秩做Pearson相关”。**
 
 如果把两个变量分别转换成秩 \(R_X\) 和 \(R_Y\)，那么：
 
@@ -404,7 +438,7 @@ Pearson相关对离群值比较敏感。
 
 这里的**单调关系**是指：
 
-> X越大，Y总体上也越大；或者X越大，Y总体上越小。
+&gt; X越大，Y总体上也越大；或者X越大，Y总体上越小。
 
 它不要求一定是一条直线。
 
@@ -415,7 +449,7 @@ Pearson相关对离群值比较敏感。
 Spearman处理的是**两个变量之间的秩相关**。  
 但心理学中还有一种常见问题：
 
-> **如果有多位评分者对同一组对象进行排序，他们彼此一致吗？**
+&gt; **如果有多位评分者对同一组对象进行排序，他们彼此一致吗？**
 
 这时常用的指标是 **Kendall’s W（肯德尔和谐系数）**。
 
@@ -472,7 +506,7 @@ W=\frac{12\sum (R_i-\bar R)^2}{m^2(n^3-n)}
 
 这一节最重要的是明白：
 
-> **当我们不再相信“分数差多少”特别重要，而更关心“谁比谁高”的顺序信息时，就进入了秩相关的世界。**
+&gt; **当我们不再相信“分数差多少”特别重要，而更关心“谁比谁高”的顺序信息时，就进入了秩相关的世界。**
 
 其中：
 
@@ -492,7 +526,7 @@ W=\frac{12\sum (R_i-\bar R)^2}{m^2(n^3-n)}
 或者两个变量都是**类别型**。  
 这时，思路必须换一下：
 
-> **先判断变量的数据类型，再决定应该选哪一种关系指标。**
+&gt; **先判断变量的数据类型，再决定应该选哪一种关系指标。**
 
 ## 一、总的判断路线
 
@@ -520,7 +554,7 @@ W=\frac{12\sum (R_i-\bar R)^2}{m^2(n^3-n)}
 
 那么点二列相关其实就在表达：
 
-> **0组和1组在连续变量上的平均水平是否存在系统差异。**
+&gt; **0组和1组在连续变量上的平均水平是否存在系统差异。**
 
 ### 公式
 
@@ -540,7 +574,7 @@ r_{pb}=\frac{M_1-M_0}{S_Y}\sqrt{pq}
 
 ### 一个关键结论
 
-> **点二列相关，本质上是Pearson相关的一种特殊形式。**
+&gt; **点二列相关，本质上是Pearson相关的一种特殊形式。**
 
 因为对一个0/1变量与一个连续变量计算Pearson相关，得到的结果恰好就是点二列相关。
 
@@ -566,7 +600,7 @@ r_{pb}=\frac{M_1-M_0}{S_Y}\sqrt{pq}
 
 它的公式中用到了正态分布在切点处的概率密度，因此：
 
-> **二列相关带有更强的模型假设，不适用于所有二分变量。**
+&gt; **二列相关带有更强的模型假设，不适用于所有二分变量。**
 
 一句话记忆：
 
@@ -591,7 +625,7 @@ r_{pb}=\frac{M_1-M_0}{S_Y}\sqrt{pq}
 
 因此，多列相关在本章只作概念性介绍。对初学者来说，更重要的是知道：
 
-> **连续变量 vs 多分类变量，实际研究中常常更自然地通向方差分析或虚拟变量回归。**
+&gt; **连续变量 vs 多分类变量，实际研究中常常更自然地通向方差分析或虚拟变量回归。**
 
 ---
 
@@ -635,7 +669,7 @@ r_{pb}=\frac{M_1-M_0}{S_Y}\sqrt{pq}
 
 并且一定要记住：
 
-> **二列相关和多列相关并不是对所有分类变量都适用，它们通常假设该分类变量背后存在被切分的连续潜变量，且该潜变量近似正态分布。**
+&gt; **二列相关和多列相关并不是对所有分类变量都适用，它们通常假设该分类变量背后存在被切分的连续潜变量，且该潜变量近似正态分布。**
 
 ---
 
@@ -643,11 +677,11 @@ r_{pb}=\frac{M_1-M_0}{S_Y}\sqrt{pq}
 
 前面几节，我们一直在问：
 
-> **两个变量之间有没有关系？**
+&gt; **两个变量之间有没有关系？**
 
 但心理学研究往往还想更进一步：
 
-> **如果我知道一个人的X值，能不能预测他的Y值？**
+&gt; **如果我知道一个人的X值，能不能预测他的Y值？**
 
 这就是从“相关”迈向“回归”的关键一步。
 
@@ -655,7 +689,7 @@ r_{pb}=\frac{M_1-M_0}{S_Y}\sqrt{pq}
 
 一元线性回归研究的是：
 
-> **用一个自变量 \(X\)，去预测一个因变量 \(Y\)。**
+&gt; **用一个自变量 \(X\)，去预测一个因变量 \(Y\)。**
 
 例如：
 
@@ -709,7 +743,7 @@ e=Y-\hat{Y}
 
 最小二乘法的思想就是：
 
-> **在所有可能的直线中，找一条让整体预测误差尽可能小的线。**
+&gt; **在所有可能的直线中，找一条让整体预测误差尽可能小的线。**
 
 ## 四、回归系数 \(b\) 与截距 \(a\)
 
@@ -738,7 +772,7 @@ b=r\cdot \frac{S_Y}{S_X}
 
 这意味着：
 
-> **回归斜率 = 相关强度 × 单位换算**
+&gt; **回归斜率 = 相关强度 × 单位换算**
 
 所以：
 
@@ -763,7 +797,7 @@ R^2
 
 它表示：
 
-> **Y的总变异中，有多大比例可以由X解释。**
+&gt; **Y的总变异中，有多大比例可以由X解释。**
 
 例如：
 
@@ -785,7 +819,7 @@ R^2=r^2
 
 样本中总能算出一条回归线，但统计学不会满足于“算出来了”，还会继续追问：
 
-> **这条线是真实反映总体趋势，还是样本偶然波动造成的？**
+&gt; **这条线是真实反映总体趋势，还是样本偶然波动造成的？**
 
 因此，一元线性回归中最核心的检验是：
 
@@ -796,11 +830,11 @@ H_0:\beta=0
 这里的 \(\beta\) 表示总体回归系数。  
 这个原假设的意思是：
 
-> **在总体中，X对Y没有线性预测作用。**
+&gt; **在总体中，X对Y没有线性预测作用。**
 
 如果检验结果表明可以拒绝这个原假设，就说明：
 
-> **样本中观察到的回归关系，不太可能只是随机波动造成的。**
+&gt; **样本中观察到的回归关系，不太可能只是随机波动造成的。**
 
 ### 这和相关检验有什么关系？
 
@@ -860,11 +894,11 @@ b=r\cdot \frac{S_Y}{S_X}
 
 那么问题来了：
 
-> **如果回归里的X不是连续变量，而是一个只有两个水平的类别变量，会怎么样？**
+&gt; **如果回归里的X不是连续变量，而是一个只有两个水平的类别变量，会怎么样？**
 
 答案是：不仅能做，而且会出现一个极其漂亮的统一：
 
-> **当X是0/1虚拟变量时，一元线性回归与点二列相关本质上是同一件事。**
+&gt; **当X是0/1虚拟变量时，一元线性回归与点二列相关本质上是同一件事。**
 
 ## 一、类别变量如何进入回归？—— 虚拟变量
 
@@ -929,7 +963,7 @@ b=M_1-M_0
 
 这就是本节第一个核心结论：
 
-> **当X是0/1虚拟变量时，回归斜率 \(b\) 就等于两组均值之差。**
+&gt; **当X是0/1虚拟变量时，回归斜率 \(b\) 就等于两组均值之差。**
 
 ## 三、心理学例子：CBT干预与抑郁得分
 
@@ -957,7 +991,7 @@ b=M_1-M_0
 
 这说明：
 
-> **接受CBT这一组，比未接受CBT这一组，平均抑郁分低6分。**
+&gt; **接受CBT这一组，比未接受CBT这一组，平均抑郁分低6分。**
 
 ## 四、这和点二列相关有什么关系？
 
@@ -982,8 +1016,8 @@ b=M_1-M_0
 
 所以可以说：
 
-> **回归在说“两组差了多少原始分数单位”；  
-> 点二列相关在说“这种差异有多强，用标准化方式表示”。**
+&gt; **回归在说“两组差了多少原始分数单位”；  
+&gt; 点二列相关在说“这种差异有多强，用标准化方式表示”。**
 
 ## 五、更深的统一：\(R^2=r_{pb}^2\)
 
@@ -1007,7 +1041,7 @@ R^2=r_{pb}^2
 
 这就是本节最关键的第二个结论：
 
-> **两水平虚拟变量的一元回归，其解释率完全等于点二列相关的平方。**
+&gt; **两水平虚拟变量的一元回归，其解释率完全等于点二列相关的平方。**
 
 ## 六、它和独立样本t检验又是什么关系？
 
@@ -1015,7 +1049,7 @@ R^2=r_{pb}^2
 
 独立样本t检验问的是：
 
-> **两组均值是否显著不同？**
+&gt; **两组均值是否显著不同？**
 
 而虚拟变量回归中检验的是：
 
@@ -1031,7 +1065,7 @@ b=M_1-M_0
 
 所以这其实就是在问：
 
-> **两组均值差是否为0？**
+&gt; **两组均值差是否为0？**
 
 因此在这个特殊场景下：
 
@@ -1041,7 +1075,7 @@ b=M_1-M_0
 
 并不是三套彼此无关的方法，而是：
 
-> **同一个统计事实的三种表达方式。**
+&gt; **同一个统计事实的三种表达方式。**
 
 ## 七、为什么这体现了一般线性模型的统一性？
 
@@ -1065,7 +1099,7 @@ b=M_1-M_0
 
 这就是一般线性模型（GLM）的精神：
 
-> **许多看起来不同的方法，底层都在处理‘解释变量如何系统影响结果变量’这一件事。**
+&gt; **许多看起来不同的方法，底层都在处理‘解释变量如何系统影响结果变量’这一件事。**
 
 ## 八、本节小结
 
@@ -1081,7 +1115,7 @@ b=M_1-M_0
 
 因此：
 
-> **点二列相关、两水平虚拟变量回归、独立样本t检验，底层逻辑是相通的。**
+&gt; **点二列相关、两水平虚拟变量回归、独立样本t检验，底层逻辑是相通的。**
 
 ---
 
@@ -1097,7 +1131,7 @@ b=M_1-M_0
 
 所以，这一章真正想教给你的，不只是几个公式，而是一种看问题的方法：
 
-> **先判断变量类型，再选择合适的关系指标；再进一步思考，这种关系能否写成预测模型；最后看到，不同统计方法其实共享同一套底层逻辑。**
+&gt; **先判断变量类型，再选择合适的关系指标；再进一步思考，这种关系能否写成预测模型；最后看到，不同统计方法其实共享同一套底层逻辑。**
 
 ---
 
@@ -1204,7 +1238,7 @@ r_{pb}=\frac{M_1-M_0}{S_Y}\sqrt{pq}
 
 这说明：
 
-> **点二列相关并不是一个神秘新公式，而就是Pearson相关在二分变量情形下的特殊化。**
+&gt; **点二列相关并不是一个神秘新公式，而就是Pearson相关在二分变量情形下的特殊化。**
 
 ---
 
@@ -1368,87 +1402,95 @@ R^2=r_{pb}^2
 
 因此：
 
-> **两水平虚拟变量回归与点二列相关是同一逻辑的不同表达。**
+&gt; **两水平虚拟变量回归与点二列相关是同一逻辑的不同表达。**
 
 ---
-  </script>
+
+
+  </textarea>
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script
-    id="MathJax-script"
-    async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
-  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
   <script>
-    function protectMath(markdown) {
+    function protectMath(md) {
       const store = [];
-      let text = markdown;
+      let text = md;
 
-      const blockPatterns = [
-        /\$\$([\s\S]+?)\$\$/g,
-        /\\\[([\s\S]+?)\\\]/g
-      ];
-
-      const inlinePatterns = [
-        /\\\(([\s\S]+?)\\\)/g,
-        /(?<!\$)\$([^\n$]+?)\$(?!\$)/g
-      ];
-
-      blockPatterns.forEach((pattern) => {
-        text = text.replace(pattern, (match) => {
-          const token = `@@MATH_BLOCK_${store.length}@@`;
-          store.push({ token, html: `<div class="math-display">${match}</div>` });
-          return `\n\n${token}\n\n`;
-        });
+      text = text.replace(/\$\$([\s\S]+?)\$\$/g, function(match) {
+        const key = "@@MATH_BLOCK_" + store.length + "@@";
+        store.push({ key, html: '<div class="math-display">' + match + '</div>' });
+        return "\n\n" + key + "\n\n";
       });
 
-      inlinePatterns.forEach((pattern) => {
-        text = text.replace(pattern, (match) => {
-          const token = `@@MATH_INLINE_${store.length}@@`;
-          store.push({ token, html: match });
-          return token;
-        });
+      text = text.replace(/\\\[([\s\S]+?)\\\]/g, function(match) {
+        const key = "@@MATH_BLOCK_" + store.length + "@@";
+        store.push({ key, html: '<div class="math-display">' + match + '</div>' });
+        return "\n\n" + key + "\n\n";
+      });
+
+      text = text.replace(/\\\(([\s\S]+?)\\\)/g, function(match) {
+        const key = "@@MATH_INLINE_" + store.length + "@@";
+        store.push({ key, html: match });
+        return key;
+      });
+
+      text = text.replace(/(^|[^$])\$([^\n$]+?)\$([^$]|$)/g, function(match, before, math, after) {
+        const key = "@@MATH_INLINE_" + store.length + "@@";
+        store.push({ key, html: "$" + math + "$" });
+        return before + key + after;
       });
 
       return { text, store };
     }
 
     function restoreMath(html, store) {
-      let output = html;
-      for (const item of store) {
-        output = output.split(item.token).join(item.html);
-      }
-      return output;
-    }
-
-    async function renderPage() {
-      const source = document.getElementById('md-source').textContent;
-      const container = document.getElementById('content');
-
-      marked.setOptions({
-        gfm: true,
-        breaks: true
+      let out = html;
+      store.forEach(function(item) {
+        out = out.split(item.key).join(item.html);
       });
+      return out;
+    }
 
-      const { text, store } = protectMath(source);
-      const rendered = marked.parse(text);
-      container.innerHTML = restoreMath(rendered, store);
+    function buildToc() {
+      const toc = document.getElementById("toc");
+      const headings = document.querySelectorAll("#content h1, #content h2, #content h3");
+      toc.innerHTML = "";
 
-      if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
-        await window.MathJax.typesetPromise([container]);
+      headings.forEach(function(h, index) {
+        const id = "heading-" + index;
+        h.id = id;
+
+        const a = document.createElement("a");
+        a.href = "#" + id;
+        a.textContent = h.textContent;
+        a.className = "level-" + h.tagName.substring(1);
+        toc.appendChild(a);
+      });
+    }
+
+    function render() {
+      const md = document.getElementById("md-source").value;
+
+      const result = protectMath(md);
+      const html = marked.parse(result.text);
+
+      const container = document.getElementById("content");
+      container.innerHTML = restoreMath(html, result.store);
+
+      buildToc();
+
+      if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise([container]);
       }
     }
 
-    function boot() {
-      renderPage();
-    }
+    document.getElementById("themeToggle").addEventListener("click", function() {
+      document.body.classList.toggle("dark");
+      this.textContent = document.body.classList.contains("dark") ? "浅色模式" : "暗色模式";
+    });
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', boot);
-    } else {
-      boot();
-    }
+    window.addEventListener("DOMContentLoaded", render);
   </script>
 </body>
 </html>
